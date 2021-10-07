@@ -40,7 +40,7 @@ def simple_upload():
 def upload_file():    
     uploaded_file = st.file_uploader("Choose a file")
     if uploaded_file is not None:
-        df = pd.read_excel(uploaded_file)
+        df = pd.read_excel(uploaded_file, engine="openpyxl")
         df = df.astype(str)
     return df
 
