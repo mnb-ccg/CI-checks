@@ -31,9 +31,10 @@ def drop_down_files():
 def upload_file():
     df = pd.DataFrame()    
     uploaded_file = st.file_uploader("Choose a file")
+    st.write(uploaded_file)
     if uploaded_file is not None:
         df = pd.read_excel(uploaded_file, engine="openpyxl")
         df = df.astype(str)
-    return df
+    return df, uploaded_file
 
 
