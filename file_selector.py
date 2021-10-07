@@ -28,7 +28,8 @@ def drop_down_files():
     return os.path.join(folder_path, selected_filename), selected_filename
  
 
-def upload_file():    
+def upload_file():
+    df = pd.DataFrame()    
     uploaded_file = st.file_uploader("Choose a file")
     if uploaded_file is not None:
         df = pd.read_excel(uploaded_file, engine="openpyxl")
