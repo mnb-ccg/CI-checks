@@ -17,7 +17,7 @@ with header:
 
 with get_file:
     #filename = fs.drop_down_files()
-    df, filename = fs.upload_file()
+    df, filename = fs.simple_upload()
     file_check = fs.test_book(filename)
     
     

@@ -8,7 +8,7 @@ Created on Thu Sep 23 15:53:28 2021
 import streamlit as st
 import pandas as pd
 import os
-#from xlrd import open_workbook, XLRDError
+from xlrd import open_workbook, XLRDError
 
 
 def test_book(filename):
@@ -26,6 +26,16 @@ def drop_down_files():
     filenames = os.listdir(folder_path)
     selected_filename = st.selectbox('Select a file', filenames)
     return os.path.join(folder_path, selected_filename), selected_filename
+
+def simple_upload():
+    uploaded_file = st.file_uploader("Choose a XLSX file", type="xlsx")
+
+    if uploaded_file:
+        df = pd.read_excel(uploaded_file)
+        st.dataframe(df)
+        st.table(df)
+        return df
+    return " ", " " 
 
 def upload_file():    
     uploaded_file = st.file_uploader("Choose a file")
