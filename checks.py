@@ -58,7 +58,7 @@ def column_check(df):
     st.write(df_col_clean)
     st.write(correct_col)
      
-    if (df_col_clean[0:41] == correct_col_clean):
+    if (df_col_clean[1:42] == correct_col_clean):
         correct = True
         st.write("Columns check out!")
     else:
