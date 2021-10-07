@@ -56,7 +56,7 @@ def column_check(df):
     correct_col_clean = col_standardize(correct_col)
     
     st.write(df_col_clean)
-    st.write(correct_col)
+    st.write(correct_col_clean)
      
     if (df_col_clean[1:42] == correct_col_clean):
         correct = True
