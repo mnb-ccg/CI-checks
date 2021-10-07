@@ -41,7 +41,7 @@ def standardize_df(df):
 
 
 def col_standardize(columns):
-    col_low = [x.lower() for x in columns.values.tolist()]
+    col_low = [x.lower() for x in columns]
     col_clean = [s.translate(str.maketrans('', '', string.punctuation)) for s in col_low] 
     return col_clean
 
