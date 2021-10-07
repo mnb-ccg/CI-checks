@@ -8,7 +8,7 @@ Created on Thu Sep 23 15:53:28 2021
 import streamlit as st
 import pandas as pd
 import os
-from xlrd import open_workbook, XLRDError
+#from xlrd import open_workbook, XLRDError
 
 
 def test_book(filename):
