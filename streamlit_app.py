@@ -18,12 +18,12 @@ with header:
 with get_file:
     #filename = fs.drop_down_files()
     df, filename = fs.upload_file()
-    file_check = fs.test_book(filename)
+    #file_check = fs.test_book(filename)
     
     
 with basic_check:
     #df_c = ch.standardize_df(df)
     column_check = False
-    if (file_check):
-        column_check = ch.column_check(df)
+    #if (file_check):
+    column_check = ch.column_check(df)
      
