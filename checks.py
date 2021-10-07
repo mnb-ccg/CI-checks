@@ -41,7 +41,7 @@ def standardize_df(df):
 
 
 def col_standardize(columns):
-    col_low = [st.write(x) for x in columns.tolist()]
+    col_low = [st.write(x) for x in columns.values.tolist()]
     col_clean = [s.translate(str.maketrans('', '', string.punctuation)) for s in col_low] 
     return col_clean
 
@@ -49,7 +49,7 @@ def col_standardize(columns):
 def column_check(df):
     st.subheader("Column Check \"Invdividual\"")
     
-    df_col = df.columns
+    df_col = df.columns.astype(str)
     df_col_clean = col_standardize(df_col)
     
     correct_col = ['company_id', 'company_name', 'year', 'person_id', 'name', 'annual_report', 'birth_date', 'gender', 'nationality', 'role code', 'position', 'election_form', 'independent', 'on_board', 'appointment_date', 'committee - audit', 'committee - nomination', 'committee - remuneration', 'committee - risk', 'step_down', 'months serving', 'comment', 'current_shares_a_number', 'current_shares_a_value', 'current_shares_b_number', 'current_shares_b_value', 'current_shares_total_number', 'current_shares_total_value', 'current_options_number', 'current_options_value', 'currency', 'base salary', 'bonus', 'total', 'award_total_value', 'award_options', 'award_options_number', 'award_options_value', 'award_shares', 'award_performance', 'award_restricted', 'award_tot_shares_value', 'award_tot_shares_number', 'pension_total', 'other_monetary', 'other_non_monetary']
