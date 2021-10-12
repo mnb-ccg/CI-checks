@@ -59,10 +59,10 @@ def column_check(df):
 
     if (df_col_clean == correct_col_clean):
         correct = True
-        st.write("Columns check out!")
+        st.success("Columns passed the check")
     else:
         correct = False
-        st.write("The columns are not the same as the template. Make sure the first 45 columns are the same as in the template. The correct column names are listed below:")
+        st.error("The columns are not the same as the template. Make sure the first 45 columns are the same as in the template. The correct column names are listed below:")
         st.write(correct_col)
 
     return correct
