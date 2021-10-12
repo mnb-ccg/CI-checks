@@ -13,7 +13,7 @@ basic_check = st.container()
 
 with header:
     st.title("Data self-checking app")
-    st.write("When you upload your data, this app will make a series of check.")
+    st.write("When you upload your data, this app will make a series of check. Yellow is a warning, but does not prevent the checks from passing.")
     st.write("For every check, either a green or a red box will appear. Green indicates succes, and red indicates an error.")
     st.write("Hopefully the feedback from these automatic checks are useful!")
 
