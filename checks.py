@@ -12,7 +12,7 @@ import numpy as np
 import string
 #from xlrd import open_workbook, XLRDError
 
-column_names = ['company_id', 'company_name', 'year', 'person_id', 'name', 'annual_report', 'birth_date', 'gender', 'nationality', 'role_code', 'position', 'election_form', 'independent', 'on_board', 'appointment_date', 'nomination', 'audit', 'remuneration', 'risk', 'step_down', 'months_serving', 'comment', 'current_shares_A_number', 'current_shares_A_value', 'current_shares_B_number', 'current_shares_B_value', 'current_shares_total_number', 'current_shares_total_value', 'current_options_number', 'current_options_value', 'currency', 'base_salary', 'bonus', 'total', 'award_total_value', 'award_options', 'award_shares', 'award_performance', 'award_restricted', 'pension_total', 'other_monetary', 'other_non_monetary', 'row_id']
+column_names = ['company_id', 'company_name', 'year', 'person_id', 'name', 'annual_report', 'birth_date', 'gender', 'nationality', 'role_code', 'position', 'election_form', 'independent', 'on_board', 'appointment_date', 'nomination', 'audit', 'remuneration', 'risk', 'step_down', 'months_serving', 'comment', 'current_shares_A_number', 'current_shares_A_value', 'current_shares_B_number', 'current_shares_B_value', 'current_shares_total_number', 'current_shares_total_value', 'current_options_number', 'current_options_value', 'currency', 'base_salary', 'bonus', 'total', 'award_total_value', 'award_options', 'award_shares', 'award_performance', 'award_restricted', 'pension_total', 'other_monetary', 'other_non_monetary', 'row_i']
 
 
 
@@ -51,19 +51,27 @@ def column_check(df):
     
     df_col = df.columns.astype(str)
     df_col_clean = col_standardize(df_col)
-    df_col_clean = df_col_clean[0:46]
     
-    correct_col = ['company_id', 'company_name', 'year', 'person_id', 'name', 'annual_report', 'birth_date', 'gender', 'nationality', 'role_code', 'position', 'election_form', 'independent', 'on_board', 'appointment_date', 'nomination', 'audit', 'remuneration', 'risk', 'step_down', 'months_serving', 'comment', 'current_shares_A_number', 'current_shares_A_value', 'current_shares_B_number', 'current_shares_B_value', 'current_shares_total_number', 'current_shares_total_value', 'current_options_number', 'current_options_value', 'currency', 'base_salary', 'bonus', 'total', 'award_total_value', 'award_options', 'award_shares', 'award_performance', 'award_restricted', 'pension_total', 'other_monetary', 'other_non_monetary', 'row_id']
-    correct_col_clean = col_standardize(column_names)
+    templ_col = column_names
+    templ_col_clean = col_standardize(templ_col)
+    
+    correct = False
+    df_set = set(df_col_clean)
+    templ_set = set(templ_col_clean)
+    missing_columns = templ_set - df_set
+    excess_columns = df_set - templ_set
     
 
-    if (df_col_clean == correct_col_clean):
+    if (len(missing_columns) == 0):
         correct = True
         st.success("Columns passed the check")
     else:
         correct = False
-        st.error("The columns are not the same as the template. Make sure the first 45 columns are the same as in the template. The correct column names are listed below:")
-        st.write(correct_col)
+        st.error("The columns are not the same as the template.")
+        st.error("These columns were not found in the uploaded dataset:")
+        st.write(missing_columns)
+        st.warning("These columns were found in the dataset, but not in the template:")
+        st.write(excess_columns)
 
     return correct
 
