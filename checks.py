@@ -47,7 +47,7 @@ def col_standardize(columns):
 
 
 def column_check(df):
-    st.subheader("Column Check \"Invdividual\"")
+    st.subheader("Column Check")
     
     df_col = df.columns.astype(str)
     df_col_clean = col_standardize(df_col)
