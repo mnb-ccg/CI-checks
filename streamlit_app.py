@@ -27,3 +27,6 @@ with basic_check:
     #if (file_check):
     column_check = ch.column_check(df)
      
+# with advanced_check:
+    #DC function here, returns new df with wrong rows, input dataframe from upload
+    
