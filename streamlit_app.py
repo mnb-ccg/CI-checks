@@ -12,7 +12,7 @@ basic_check = st.container()
 #path_dk = 'C:\\Users\\mnb.ccg\\OneDrive - CBS - Copenhagen Business School\\Data Collection DATABASE\\material for credit info\\Final Templates and material\\CI_mnb_check\\13-09-2021'
 
 with header:
-    st.title("Welcome to the data self-checking app")
+    st.title("Data self-checking app")
     st.write("When you upload your data, this app will make a series of check.")
     st.write("For every check, either a green or a red box will appear. Green indicates succes, and red indicates an error.")
     st.write("Hopefully the feedback from these automatic checks are useful!")
