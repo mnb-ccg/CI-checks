@@ -34,6 +34,9 @@ def upload_file():
     if uploaded_file is not None:
         df = pd.read_excel(uploaded_file, engine="openpyxl")
         df = df.astype(str)
-    return df, uploaded_file
+        file_bool = True
+    else:
+        file_bool = False
+    return df, file_bool
 
 
