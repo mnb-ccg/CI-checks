@@ -29,14 +29,20 @@ def drop_down_files():
  
 
 def upload_file():
-    df = pd.DataFrame()    
     uploaded_file = st.file_uploader("Choose a file")
+    file_bool_i = False
+    file_bool_c = False
+    
     if uploaded_file is not None:
-        df = pd.read_excel(uploaded_file, engine="openpyxl")
-        df = df.astype(str)
-        file_bool = True
-    else:
-        file_bool = False
-    return df, file_bool
+        df_i = pd.read_excel(uploaded_file, engine="openpyxl", sheet='individual')
+        df_c = pd.read_excel(uploaded_file, engine="openpyxl", sheet='company')
+        #df_i = df_i.astype(str)
+        #df_c = df_c.astype(str)
+        if (df_i.empty == False):
+            file_bool_i = True
+        if (df_c.empty == False): 
+            file_bool_c = True
+            
+    return df_i, df_c, file_bool_i, file_bool_c
 
 

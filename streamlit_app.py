@@ -7,31 +7,41 @@ import checks as ch
 header = st.container()
 get_file = st.container()
 basic_check = st.container()
+advaced_check = st.container()
 
-# To be replaced with something dynamic, like somewhere to upload
-#path_dk = 'C:\\Users\\mnb.ccg\\OneDrive - CBS - Copenhagen Business School\\Data Collection DATABASE\\material for credit info\\Final Templates and material\\CI_mnb_check\\13-09-2021'
 
 with header:
-    st.title("Data self-checking app")
+    st.title("Data Self-Checking App")
     st.write("When you upload your data, this app will make a series of check. Yellow is a warning, but does not prevent the checks from passing.")
     st.write("For every check, either a green or a red box will appear. Green indicates succes, and red indicates an error.")
     st.write("Hopefully the feedback from these automatic checks are useful!")
 
 
 with get_file:
-    #filename = fs.drop_down_files()
-    file_bool = False
-    df, file_bool = fs.upload_file()
-    #file_check = fs.test_book(filename)
+    file_bool_i = False
+    file_bool_c = False
+    df_i, df_c, file_bool_i, file_bool_c = fs.upload_file()
+    if(file_bool_i == False):
+        st.error("No 'Individual' sheet found. Check to see if this is the correct file, and check spelling")
+    if(file_bool_c == False):
+        st.error("No 'Company' sheet found. Check to see if this is the correct file, and check spelling")
     
     
 with basic_check:
-    #df_c = ch.standardize_df(df)
-    column_check = False
-    if (file_bool):
-        column_check = ch.column_check(df)
-    
+    column_check_i = False
+    column_check_c = False
+    st.subheader("Column Check - 'Individual'")
+    if (file_bool_i):
+        column_check_i = ch.column_check_i(df_i, 'Individual')
+    st.subheader("Column Check - 'Company'")
+    if (file_bool_c):
+        column_check_c = ch.column_check_i(df_c, 'Company')
      
-# with advanced_check:
+with advanced_check:
+    if(column_check_i & column_check_c):
+        
+        
+    
+    
     #DC function here, returns new df with wrong rows, input dataframe from upload
     
