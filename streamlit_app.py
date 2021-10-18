@@ -7,7 +7,7 @@ import checks as ch
 header = st.container()
 get_file = st.container()
 basic_check = st.container()
-advaced_check = st.container()
+advanced_check = st.container()
 
 
 with header:
