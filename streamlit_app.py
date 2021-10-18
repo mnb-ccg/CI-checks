@@ -34,12 +34,13 @@ with get_file:
 with basic_check:
     column_check_i = False
     column_check_c = False
-    st.subheader("Column Check - 'Individual'")
-    if (file_bool_i):
-        column_check_i = ch.column_check(df_i, 'Individual')
-    st.subheader("Column Check - 'Company'")
-    if (file_bool_c):
-        column_check_c = ch.column_check(df_c, 'Company')
+    if(file_bool_i and file_bool_c)
+        st.subheader("Column Check - 'Individual'")
+        if (file_bool_i):
+            column_check_i = ch.column_check(df_i, 'Individual')
+        st.subheader("Column Check - 'Company'")
+        if (file_bool_c):
+            column_check_c = ch.column_check(df_c, 'Company')
      
 with advanced_check:
     if(column_check_i & column_check_c):
