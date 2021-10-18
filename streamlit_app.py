@@ -34,7 +34,7 @@ with get_file:
 with basic_check:
     column_check_i = False
     column_check_c = False
-    if(file_bool_i and file_bool_c)
+    if(file_bool_i and file_bool_c):
         st.subheader("Column Check - 'Individual'")
         if (file_bool_i):
             column_check_i = ch.column_check(df_i, 'Individual')
