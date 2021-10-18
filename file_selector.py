@@ -32,6 +32,7 @@ def upload_file():
     uploaded_file = st.file_uploader("Choose a file")
     file_bool_i = False
     file_bool_c = False
+    upload_bool = False
     df_i = pd.DataFrame()
     df_c = pd.DataFrame()
     
