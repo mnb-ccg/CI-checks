@@ -43,6 +43,6 @@ def upload_file():
         if (df_c.empty == False): 
             file_bool_c = True
             
-    return df_i, df_c, file_bool_i, file_bool_c
+            return df_i, df_c, file_bool_i, file_bool_c
 
 

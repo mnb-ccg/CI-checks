@@ -82,3 +82,5 @@ def column_check(df, sheet):
 
 def check_basic_types(df):
     pass
+    #df['year'] == 
+    
