@@ -20,13 +20,16 @@ with header:
 with get_file:
     file_bool_i = False
     file_bool_c = False
-    df_i, df_c, file_bool_i, file_bool_c, upload_bool = fs.upload_file()
-
-    if(file_bool_i == False):
-        st.error("No 'Individual' sheet found. Check to see if this is the correct file, and check spelling")
-    if(file_bool_c == False):
-        st.error("No 'Company' sheet found. Check to see if this is the correct file, and check spelling")
+    upload_bool = False
     
+    df_i, df_c, file_bool_i, file_bool_c, upload_bool = fs.upload_file()
+    
+    if(upload_bool == True):
+        if(file_bool_i == False):
+            st.error("No 'Individual' sheet found. Check to see if this is the correct file, and check spelling")
+        if(file_bool_c == False):
+            st.error("No 'Company' sheet found. Check to see if this is the correct file, and check spelling")
+        
     
 with basic_check:
     column_check_i = False
