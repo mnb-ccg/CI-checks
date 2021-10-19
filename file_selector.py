@@ -39,8 +39,6 @@ def upload_file():
     if uploaded_file is not None:
         df_i = pd.read_excel(uploaded_file, engine="openpyxl", sheet_name='individual')
         df_c = pd.read_excel(uploaded_file, engine="openpyxl", sheet_name='company')
-        #df_i = df_i.astype(str)
-        #df_c = df_c.astype(str)
         if (df_i.empty == False):
             file_bool_i = True
         if (df_c.empty == False): 

@@ -12,8 +12,8 @@ advanced_check = st.container()
 
 with header:
     st.title("Data Self-Checking App")
-    st.write("When you upload your data, this app will make a series of check. Yellow is a warning, but does not prevent the checks from passing.")
-    st.write("For every check, either a green or a red box will appear. Green indicates succes, and red indicates an error.")
+    st.write("When you upload your data, this app will make a series of check.")
+    st.write("For every check, a green, yellow or red box will appear. Green indicates succes, yellow a warning, and red an error.")
     st.write("Hopefully the feedback from these automatic checks are useful!")
 
 
@@ -44,7 +44,8 @@ with basic_check:
      
 with advanced_check:
     if(column_check_i & column_check_c):
-        pass
+        df_cy = check_basic_types(df_i)
+        st.write(df_cy)
         
         
     

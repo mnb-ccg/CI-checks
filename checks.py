@@ -79,8 +79,14 @@ def column_check(df, sheet):
 
     return correct
 
+def check_year_length(string):
+    if(len(string) == 4):
+        return True
+    if(len(string) != 4):
+        return False
+
 
 def check_basic_types(df):
-    pass
-    #df['year'] == 
+    df['year'].apply(check_year_length)
+    return df
     
