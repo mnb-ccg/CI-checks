@@ -44,7 +44,7 @@ with basic_check:
      
 with advanced_check:
     if(column_check_i & column_check_c):
-        df_cy = check_basic_types(df_i)
+        df_cy = ch.check_basic_types(df_i)
         st.write(df_cy)
         
         
