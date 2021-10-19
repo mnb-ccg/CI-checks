@@ -32,19 +32,21 @@ with get_file:
         
     
 with basic_check:
+    
     column_check_i = False
     column_check_c = False
     if(file_bool_i and file_bool_c):
-        st.subheader("Column Check - 'Individual'")
+        st.header("Columns Check")
+        st.subsubheader("Column Check - 'Individual'")
         if (file_bool_i):
             column_check_i = ch.column_check(df_i, 'Individual')
-        st.subheader("Column Check - 'Company'")
+        st.subsubheader("Column Check - 'Company'")
         if (file_bool_c):
             column_check_c = ch.column_check(df_c, 'Company')
      
 with advanced_check:
     if(column_check_i & column_check_c):
-        st.subheader("'year' - Check" )
+        st.subsubheader("'year' - Check" )
         bool_cy, faulty_rows = ch.check_basic_types(df_i)
         if (bool_cy):
             st.success("Check passed")
