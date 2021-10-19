@@ -79,10 +79,10 @@ def column_check(df, sheet):
 
     return correct
 
-def check_year_length(string):
-    if(len(string) == 4):
+def check_year_length(year):
+    if(len(str(year)) == 4):
         return True
-    if(len(string) != 4):
+    if(len(str(year)) != 4):
         return False
 
 
