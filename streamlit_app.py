@@ -37,16 +37,16 @@ with basic_check:
     column_check_c = False
     if(file_bool_i and file_bool_c):
         st.header("Columns Check")
-        st.subsubheader("Column Check - 'Individual'")
+        st.subheader("Column Check - 'Individual'")
         if (file_bool_i):
             column_check_i = ch.column_check(df_i, 'Individual')
-        st.subsubheader("Column Check - 'Company'")
+        st.subheader("Column Check - 'Company'")
         if (file_bool_c):
             column_check_c = ch.column_check(df_c, 'Company')
      
 with advanced_check:
     if(column_check_i & column_check_c):
-        st.subsubheader("'year' - Check" )
+        st.subheader("'year' - Check" )
         bool_cy, faulty_rows = ch.check_basic_types(df_i)
         if (bool_cy):
             st.success("Check passed")
