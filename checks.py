@@ -88,5 +88,6 @@ def check_year_length(year):
 
 def check_basic_types(df):
     df_check = df['year'].apply(check_year_length)
-    return df_check
+    bool_cy = df_check.all()
+    return bool_cy
     
