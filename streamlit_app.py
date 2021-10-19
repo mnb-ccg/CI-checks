@@ -44,9 +44,10 @@ with basic_check:
      
 with advanced_check:
     if(column_check_i & column_check_c):
+        st.subheader("'year' - Check" )
         bool_cy, faulty_rows = ch.check_basic_types(df_i)
         if (bool_cy):
-            st.success("Years are good")
+            st.success("Check passed")
         else:
             st.error("These rows do not look correct:")
             st.write(faulty_rows)
