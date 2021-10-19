@@ -44,10 +44,12 @@ with basic_check:
      
 with advanced_check:
     if(column_check_i & column_check_c):
-        bool_cy = ch.check_basic_types(df_i)
-        st.write(bool_cy)
-        
-        
+        bool_cy, faulty_rows = ch.check_basic_types(df_i)
+        if (bool_cy):
+            st.success("Years are good")
+        else:
+            st.error("These rows do not look correct:")
+            st.write(faulty_rows)
     
     
     #DC function here, returns new df with wrong rows, input dataframe from upload
