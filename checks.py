@@ -114,8 +114,9 @@ def date_split(date):
 
 def check_date_format(date):
     ## Do we accept that dates are nan values?
-    if(math.isnan(date)):
-        return True
+    if (type(date) == float):
+        if(math.isnan(date)):
+            return True
     
     days, months, years, bool_split = date_split(date)
     
