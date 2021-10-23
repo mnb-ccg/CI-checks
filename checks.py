@@ -100,6 +100,7 @@ def date_split(date):
     return days, months, years
 
 def check_date_format(date):
+    st.write(date)
     days, months, years = date_split(date)
     
     days_b0 = (len(days) == 2)
@@ -117,7 +118,6 @@ def check_date_format(date):
     
 
 def check_date(df):
-    st.write(type(df['appointment_date'][0]))
     df_check = df['appointment_date'].apply(check_date_format)
     bool_cd = df_check.all()
     faulty_rows = df[df_check == False]
