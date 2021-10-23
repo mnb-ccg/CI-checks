@@ -46,10 +46,14 @@ with basic_check:
             column_check_c = ch.column_check(df_c, 'Company')
      
 with year_check:
+    #now that we know that the dataset conforms to our format, we can now 
+    #focus on the data quality on the individuals found in the annual reports
+    df_i = fs.filter_an_report(df_i.copy())
+    
     bool_cy_i = False
     bool_cy_c = False
     if(column_check_i & column_check_c):
-        df_i = fs.filter_an_report(df_i)
+        
         st.write(df_i.head())
         
         st.header("Advanced Checks")
@@ -74,13 +78,21 @@ with year_check:
             
 with date_check:
     if(bool_cy_i & bool_cy_c):
-        #st.subheader("'date' - Check" )
-        #bool_cy, faulty_rows = ch.check_basic_types(df_i)
-        #if (bool_cy):
-        #    st.success("Check passed")
-        #else:
-        #    st.error("These rows do not look correct:")
-        #    st.write(faulty_rows)
-        st.write("hello world")
+        st.subheader("'appointment' - Check" )
+        
+        bool_cd_i, faulty_rows = ch.check_basic_types(df_i)
+        if (bool_cd_i):
+            st.success("Check passed")
+        else:
+            st.error("These rows do not look correct:")
+            st.write(faulty_rows)
+            
+        bool_cd_c, faulty_rows = ch.check_basic_types(df_c)
+        if (bool_cd_i):
+            st.success("Check passed")
+        else:
+            st.error("These rows do not look correct:")
+            st.write(faulty_rows)
+        
     
     #DC function here, returns new df with wrong rows, input dataframe from upload

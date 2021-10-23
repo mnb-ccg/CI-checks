@@ -91,4 +91,33 @@ def check_year(df):
     bool_cy = df_check.all()
     faulty_rows = df[df_check == False]
     return bool_cy, faulty_rows
+
+def date_split(date):
+    split_date = date.split("-")
+    days = split_date[0]
+    months = split_date[1]
+    years = split_date[2]
+    return days, months, years
+
+def check_date_format(date):
+    days, months, years = date_split(split_date)
     
+    days_b0 = (len(days) == 2)
+    days_b1 = (int(days) <= 31)
+    
+    months_b0 = (len(months) == 2)
+    months_b1 = (int(months) <= 12)
+    
+    years_b0 = (len(years) == 4)
+    years_b1 = ( (int(years)<2020) and (int(years)>1900) )
+    
+    bool_cd = (days_b0 and days_b1 and months_b0 and months_b1 and  years_b0 and years_b1)
+    
+    return bool_cd
+    
+
+def check_date(df):
+    df_check = df['appointment'].apply(check_year_length)
+    bool_cd = df_check.all()
+    faulty_rows = df[df_check == False]
+    return bool_cd, faulty_rows
