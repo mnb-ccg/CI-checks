@@ -8,6 +8,7 @@ header = st.container()
 get_file = st.container()
 basic_check = st.container()
 role_code_check = st.container()
+position_check = st.container()
 year_check = st.container()
 birth_date_check = st.container()
 appointment_date_check = st.container()
@@ -68,6 +69,18 @@ with role_code_check:
             st.error("These rows do not look correct:")
             st.write(faulty_rows_rc)
         
+
+with position_check:
+    bool_pos = False
+    if(column_check_i & column_check_c):
+        st.subheader("'position' - Check")
+        
+        bool_pos, faulty_rows_pos = ch.check_role_code(df_i)
+        if (bool_pos):
+            st.success("'Individual' - 'position', check passed")
+        else:
+            st.error("These rows do not look correct:")
+            st.write(faulty_rows_pos)
     
      
         
@@ -81,7 +94,6 @@ with year_check:
         bool_cy_i, faulty_rows_i = ch.check_year(df_i)
         if (bool_cy_i):
             st.success("'Individual' - 'year', check passed")
-            year_check_i = True
         else:
             st.error("These rows do not look correct:")
             st.write(faulty_rows_i)
@@ -89,7 +101,6 @@ with year_check:
         bool_cy_c, faulty_rows_c = ch.check_year(df_c)
         if (bool_cy_c):
             st.success("'Company' - 'year', check passed")
-            year_check_C = True
         else:
             st.error("These rows do not look correct:")
             st.write(faulty_rows_c)
