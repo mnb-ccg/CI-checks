@@ -7,7 +7,8 @@ import checks as ch
 header = st.container()
 get_file = st.container()
 basic_check = st.container()
-advanced_check = st.container()
+year_check = st.container()
+date_check = st.container()
 
 
 with header:
@@ -32,7 +33,6 @@ with get_file:
         
     
 with basic_check:
-    
     column_check_i = False
     column_check_c = False
     if(file_bool_i and file_bool_c):
@@ -44,17 +44,39 @@ with basic_check:
         if (file_bool_c):
             column_check_c = ch.column_check(df_c, 'Company')
      
-with advanced_check:
+with year_check:
+    year_check_i = False
+    year_check_c = False
     if(column_check_i & column_check_c):
         st.header("Advanced Checks")
         st.subheader("'year' - Check" )
-        bool_cy, faulty_rows = ch.check_basic_types(df_i)
-        if (bool_cy):
-            st.success("Check passed")
+        
+        bool_cy_i, faulty_rows_i = ch.check_year(df_i)
+        if (bool_cy_i):
+            st.success("'Individual' - 'year', check passed")
+            year_check_i = True
         else:
             st.error("These rows do not look correct:")
-            st.write(faulty_rows)
-    
+            st.write(faulty_rows_i)
+            
+        bool_cy_c, faulty_rows_c = ch.check_year(df_c)
+        if (bool_cy_c):
+            st.success("'Company' - 'year', check passed")
+            year_check_C = True
+        else:
+            st.error("These rows do not look correct:")
+            st.write(faulty_rows_c)
+            
+            
+with date_check:
+    if(bool_cy_i & bool_cy_c):
+        #st.subheader("'date' - Check" )
+        #bool_cy, faulty_rows = ch.check_basic_types(df_i)
+        #if (bool_cy):
+        #    st.success("Check passed")
+        #else:
+        #    st.error("These rows do not look correct:")
+        #    st.write(faulty_rows)
+        st.write("hello world")
     
     #DC function here, returns new df with wrong rows, input dataframe from upload
-    

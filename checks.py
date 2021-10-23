@@ -86,7 +86,7 @@ def check_year_length(year):
         return False
 
 
-def check_basic_types(df):
+def check_year(df):
     df_check = df['year'].apply(check_year_length)
     bool_cy = df_check.all()
     faulty_rows = df[df_check == False]
