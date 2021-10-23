@@ -102,9 +102,9 @@ def date_split(date):
         
 
     if(len(split_date) == 3):
-        days = split_date[0]
+        days = split_date[2]
         months = split_date[1]
-        years = split_date[2]
+        years = split_date[0]
         return days, months, years, True
     else:
         days = 32
