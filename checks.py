@@ -172,3 +172,32 @@ def check_role_code(df):
     faulty_rows = df[df_check == False]
     return bool_cd, faulty_rows
 ###
+
+
+###
+def check_position_format(inp):
+    board_pos = ['CHAIRMAN', 'VICECHAIRMAN', 'BOARD MEMBER']
+    
+    st.write(inp)
+    rc = inp[0]
+    pos = inp[1]
+    if (type(rc) == float):
+        if(math.isnan(rc)):
+            return False
+        
+    if((rc == 'EXECUTIVE') and (len(pos)>0)):
+        return True
+    
+    if ((rc == 'BOARD') and (pos in board_pos)):
+        return True
+    
+    else: 
+        return False
+
+
+def check_position_code(df):
+    df_check = df[['role_code','position']].apply(check_rc_format)
+    bool_cd = df_check.all()
+    faulty_rows = df[df_check == False]
+    return bool_cd, faulty_rows
+###
