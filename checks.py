@@ -8,7 +8,7 @@ Created on Wed Sep 29 19:34:31 2021
 import streamlit as st
 #import importing_files as imfil
 import matplotlib.pyplot as plt
-import numpy as np
+#import numpy as np
 import string
 #from xlrd import open_workbook, XLRDError
 
@@ -98,7 +98,6 @@ def date_split(date):
     except AttributeError:
         print("AttributeError, most likely nan value")
         split_date = []
-        st.write(date)
         
 
     if(len(split_date) == 3):
