@@ -25,6 +25,7 @@ with get_file:
     
     df_i, df_c, file_bool_i, file_bool_c, upload_bool = fs.upload_file()
     
+    
     if(upload_bool == True):
         if(file_bool_i == False):
             st.error("No 'Individual' sheet found. Check to see if this is the correct file, and check spelling")
@@ -45,9 +46,12 @@ with basic_check:
             column_check_c = ch.column_check(df_c, 'Company')
      
 with year_check:
-    year_check_i = False
-    year_check_c = False
+    bool_cy_i = False
+    bool_cy_c = False
     if(column_check_i & column_check_c):
+        df_i = fs.filter_an_report(df_i)
+        st.write(df_i.head())
+        
         st.header("Advanced Checks")
         st.subheader("'year' - Check" )
         

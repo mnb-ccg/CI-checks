@@ -48,3 +48,6 @@ def upload_file():
     return df_i, df_c, file_bool_i, file_bool_c, upload_bool
 
 
+def filter_an_report(df):
+    new_df = df[df['annual_report'] == 1]
+    return new_df
