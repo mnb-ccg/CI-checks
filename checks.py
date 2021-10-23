@@ -98,6 +98,7 @@ def date_split(date):
     except AttributeError:
         print("AttributeError, most likely nan value")
         split_date = []
+        st.write(date)
         
 
     if(len(split_date) == 3):
