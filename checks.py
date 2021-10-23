@@ -93,28 +93,41 @@ def check_year(df):
     return bool_cy, faulty_rows
 
 def date_split(date):
-    split_date = date.split("-")
-    days = split_date[0]
-    months = split_date[1]
-    years = split_date[2]
-    return days, months, years
+    try:
+        split_date = date.split("-")
+    except AttributeError:
+        print("AttributeError, most likely nan value")
+        
+
+    if(len(split_date) == 3):
+        days = split_date[0]
+        months = split_date[1]
+        years = split_date[2]
+        return days, months, years, True
+    else:
+        days = 32
+        months = 13
+        years = 0     
+        return days, months, years, False
 
 def check_date_format(date):
-    st.write(date)
-    days, months, years = date_split(date)
+    days, months, years, bool_split = date_split(date)
     
-    days_b0 = (len(days) == 2)
-    days_b1 = (int(days) <= 31)
+    if (bool_split == True):
+        days_b0 = (len(days) == 2)
+        days_b1 = (int(days) <= 31)
+        
+        months_b0 = (len(months) == 2)
+        months_b1 = (int(months) <= 12)
+        
+        years_b0 = (len(years) == 4)
+        years_b1 = ( (int(years)<2020) and (int(years)>1900))
+        
+        bool_cd = (days_b0 and days_b1 and months_b0 and months_b1 and  years_b0 and years_b1)
+        return bool_cd
     
-    months_b0 = (len(months) == 2)
-    months_b1 = (int(months) <= 12)
-    
-    years_b0 = (len(years) == 4)
-    years_b1 = ( (int(years)<2020) and (int(years)>1900))
-    
-    bool_cd = (days_b0 and days_b1 and months_b0 and months_b1 and  years_b0 and years_b1)
-    
-    return bool_cd
+    else:
+        return False
     
 
 def check_date(df):
