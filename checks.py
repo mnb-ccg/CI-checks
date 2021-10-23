@@ -178,11 +178,9 @@ def check_role_code(df):
 def check_position_format(inp):
     board_pos = ['CHAIRMAN', 'VICECHAIRMAN', 'BOARD MEMBER']
     
-    st.write(inp)
-    
     rc, pos = inp.split(",")
     
-    if (type(rc) == float):
+    if (rc == "nan"):
         if(math.isnan(rc)):
             return False
         
