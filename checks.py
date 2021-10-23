@@ -195,7 +195,7 @@ def check_position_format(inp):
         return False
 
 
-def check_position_code(df):
+def check_position(df):
     df_check = df[['role_code','position']].apply(check_position_format)
     bool_cd = df_check.all()
     faulty_rows = df[df_check == False]

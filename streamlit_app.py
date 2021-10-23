@@ -75,7 +75,7 @@ with position_check:
     if(column_check_i & column_check_c):
         st.subheader("'position' - Check")
         
-        bool_pos, faulty_rows_pos = ch.check_role_code(df_i)
+        bool_pos, faulty_rows_pos = ch.check_position(df_i)
         if (bool_pos):
             st.success("'Individual' - 'position', check passed")
         else:
