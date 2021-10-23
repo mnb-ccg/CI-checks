@@ -179,8 +179,10 @@ def check_position_format(inp):
     board_pos = ['CHAIRMAN', 'VICECHAIRMAN', 'BOARD MEMBER']
     
     st.write(inp)
+    
     rc = inp[0]
     pos = inp[1]
+    
     if (type(rc) == float):
         if(math.isnan(rc)):
             return False
@@ -196,7 +198,9 @@ def check_position_format(inp):
 
 
 def check_position(df):
-    df_check = df[['role_code','position']].apply(check_position_format)
+    new_df = df.copy()
+    new_df['key'] = df['role_code'] + df['position']
+    df_check = new_df['key'].apply(check_position_format)
     bool_cd = df_check.all()
     faulty_rows = df[df_check == False]
     return bool_cd, faulty_rows
