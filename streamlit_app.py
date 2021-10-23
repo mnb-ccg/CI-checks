@@ -10,6 +10,8 @@ basic_check = st.container()
 year_check = st.container()
 birth_date_check = st.container()
 appointment_date_check = st.container()
+role_code_check = st.container()
+
 
 
 
@@ -46,19 +48,33 @@ with basic_check:
         st.subheader("Column Check - 'Company'")
         if (file_bool_c):
             column_check_c = ch.column_check(df_c, 'Company')
+            
+with role_code_check:
+    bool_rc = False
+    if(column_check_i & column_check_c):
+        st.header("Row-by-Row Checks")
+        #now that we know that the dataset conforms to our format, we can now 
+        #focus on the data quality on the individuals found in the annual reports
+        df_i = fs.filter_an_report(df_i.copy())
+        
+        st.subheader("'role_code' - Check")
+        
+        bool_rc, faulty_rows_rc = ch.check_role_code(df_i)
+        if (bool_rc):
+            st.success("'Individual' - 'role_code', check passed")
+            bool_rc = True
+        else:
+            st.error("These rows do not look correct:")
+            st.write(faulty_rows_rc)
+        
+    
      
         
 with year_check:
     bool_cy_i = False
     bool_cy_c = False
     if(column_check_i & column_check_c):
-        
-        #now that we know that the dataset conforms to our format, we can now 
-        #focus on the data quality on the individuals found in the annual reports
-        df_i = fs.filter_an_report(df_i.copy())
-    
-        
-        st.header("Advanced Checks")
+
         st.subheader("'year' - Check" )
         
         bool_cy_i, faulty_rows_i = ch.check_year(df_i)
@@ -104,7 +120,8 @@ with appointment_date_check:
             st.error("These rows do not look correct:")
             st.write(faulty_rows)
             
-        
+
+
         
     
     #DC function here, returns new df with wrong rows, input dataframe from upload

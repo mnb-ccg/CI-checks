@@ -37,7 +37,11 @@ def plot_barh_missing(columns, values, start_index, final_index, title):
 
     return fig
 
-
+def check_if_nan(value):
+    if (type(value) == float):
+        if(math.isnan(value)):
+            return True
+    return False
 
 def col_standardize(columns):
     col_low = [x.lower() for x in columns]
@@ -45,6 +49,7 @@ def col_standardize(columns):
     return col_clean
 
 
+###
 def column_check(df, sheet):
     
     df_col = df.columns.astype(str)
@@ -79,7 +84,9 @@ def column_check(df, sheet):
         st.write(excess_columns)
 
     return correct
+###
 
+###
 def check_year_length(year):
     if(len(str(year)) == 4):
         return True
@@ -92,7 +99,10 @@ def check_year(df):
     bool_cy = df_check.all()
     faulty_rows = df[df_check == False]
     return bool_cy, faulty_rows
+###
 
+
+###
 def date_split(date):
     try:
         split_date = date.split("-")
@@ -128,7 +138,7 @@ def check_date_format(date):
         months_b1 = (int(months) <= 12)
         
         years_b0 = (len(years) == 4)
-        years_b1 = ( (int(years)<=2030) and (int(years)>1900))
+        years_b1 = ((int(years)<=2030) and (int(years)>1900))
         
         bool_cd = (days_b0 and days_b1 and months_b0 and months_b1 and  years_b0 and years_b1)
         return bool_cd
@@ -142,3 +152,23 @@ def check_date(df, column):
     bool_cd = df_check.all()
     faulty_rows = df[df_check == False]
     return bool_cd, faulty_rows
+###
+
+###
+def check_rc_format(rc):
+    if (type(rc) == float):
+        if(math.isnan(rc)):
+            return False
+        
+    if(rc == 'EXECUTIVE' or rc == 'BOARD'):
+        return True
+    else: 
+        return False
+
+
+def check_role_code(df):
+    df_check = df['role_code'].apply(check_rc_format)
+    bool_cd = df_check.all()
+    faulty_rows = df[df_check == False]
+    return bool_cd, faulty_rows
+###
