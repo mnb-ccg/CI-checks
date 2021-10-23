@@ -46,15 +46,16 @@ with basic_check:
             column_check_c = ch.column_check(df_c, 'Company')
      
 with year_check:
-    #now that we know that the dataset conforms to our format, we can now 
-    #focus on the data quality on the individuals found in the annual reports
-    df_i = fs.filter_an_report(df_i.copy())
+    
     
     bool_cy_i = False
     bool_cy_c = False
     if(column_check_i & column_check_c):
         
-        st.write(df_i.head())
+        #now that we know that the dataset conforms to our format, we can now 
+        #focus on the data quality on the individuals found in the annual reports
+        df_i = fs.filter_an_report(df_i.copy())
+    
         
         st.header("Advanced Checks")
         st.subheader("'year' - Check" )
