@@ -117,7 +117,7 @@ def check_date_format(date):
     
 
 def check_date(df):
-    st.write(df.head())
+    st.write(df['appointment_date'][0])
     df_check = df['appointment_date'].apply(check_date_format)
     bool_cd = df_check.all()
     faulty_rows = df[df_check == False]
