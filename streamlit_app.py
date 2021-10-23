@@ -8,7 +8,9 @@ header = st.container()
 get_file = st.container()
 basic_check = st.container()
 year_check = st.container()
-date_check = st.container()
+birth_date_check = st.container()
+appointment_date_check = st.container()
+
 
 
 with header:
@@ -45,9 +47,8 @@ with basic_check:
         if (file_bool_c):
             column_check_c = ch.column_check(df_c, 'Company')
      
+        
 with year_check:
-    
-    
     bool_cy_i = False
     bool_cy_c = False
     if(column_check_i & column_check_c):
@@ -76,13 +77,28 @@ with year_check:
             st.error("These rows do not look correct:")
             st.write(faulty_rows_c)
             
-            
-with date_check:
-    if(bool_cy_i & bool_cy_c):
-        st.subheader("'Individual' - 'appointment_date', check passed" )
+
+with birth_date_check:
+    bool_cbd = False 
+    if(column_check_i & column_check_c):
+        st.subheader("'Individual' - 'birth_date' check" )
         
-        bool_cd_i, faulty_rows = ch.check_date(df_i)
-        if (bool_cd_i):
+        bool_cbd, faulty_rows = ch.check_date(df_i, "birth_date")
+        if (bool_cbd):
+            st.success("Check passed")
+        else:
+            st.error("These rows do not look correct:")
+            st.write(faulty_rows)
+
+
+            
+with appointment_date_check:
+    bool_cad = False 
+    if(column_check_i & column_check_c):
+        st.subheader("'Individual' - 'appointment_date' check" )
+        
+        bool_cad, faulty_rows = ch.check_date(df_i, "appointment_date")
+        if (bool_cad):
             st.success("Check passed")
         else:
             st.error("These rows do not look correct:")

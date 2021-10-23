@@ -10,6 +10,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 #import numpy as np
 import string
+import math
 #from xlrd import open_workbook, XLRDError
 
 column_names_i = ['company_id', 'company_name', 'year', 'person_id', 'name', 'annual_report', 'birth_date', 'gender', 'nationality', 'role_code', 'position', 'election_form', 'independent', 'on_board', 'appointment_date', 'nomination', 'audit', 'remuneration', 'risk', 'step_down', 'months_serving', 'comment', 'current_shares_A_number', 'current_shares_A_value', 'current_shares_B_number', 'current_shares_B_value', 'current_shares_total_number', 'current_shares_total_value', 'current_options_number', 'current_options_value', 'currency', 'base_salary', 'bonus', 'total', 'award_total_value', 'award_options', 'award_shares', 'award_performance', 'award_restricted', 'pension_total', 'other_monetary', 'other_non_monetary', 'row_id']
@@ -112,6 +113,10 @@ def date_split(date):
         return days, months, years, False
 
 def check_date_format(date):
+    ## Do we accept that dates are nan values?
+    if(math.isnan(date)):
+        return True
+    
     days, months, years, bool_split = date_split(date)
     
     if (bool_split == True):
@@ -131,8 +136,8 @@ def check_date_format(date):
         return False
     
 
-def check_date(df):
-    df_check = df['appointment_date'].apply(check_date_format)
+def check_date(df, column):
+    df_check = df[column].apply(check_date_format)
     bool_cd = df_check.all()
     faulty_rows = df[df_check == False]
     return bool_cd, faulty_rows
