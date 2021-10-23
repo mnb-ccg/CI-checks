@@ -79,7 +79,7 @@ with year_check:
             
 with date_check:
     if(bool_cy_i & bool_cy_c):
-        st.subheader("'Individual' - 'appointment', check passed" )
+        st.subheader("'Individual' - 'appointment_date', check passed" )
         
         bool_cd_i, faulty_rows = ch.check_date(df_i)
         if (bool_cd_i):
