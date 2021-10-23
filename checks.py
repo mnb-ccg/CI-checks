@@ -180,9 +180,8 @@ def check_position_format(inp):
     
     rc, pos = inp.split(",")
     
-    if (rc == "nan"):
-        if(math.isnan(rc)):
-            return False
+    if ((rc == "nan") or (pos == "nan")):
+        return False
         
     if((rc == 'EXECUTIVE') and (len(pos)>0)):
         return True
