@@ -79,21 +79,16 @@ with year_check:
             
 with date_check:
     if(bool_cy_i & bool_cy_c):
-        st.subheader("'appointment' - Check" )
+        st.subheader("'Individual' - 'appointment', check passed" )
         
-        bool_cd_i, faulty_rows = ch.check_basic_types(df_i)
+        bool_cd_i, faulty_rows = ch.check_date(df_i)
         if (bool_cd_i):
             st.success("Check passed")
         else:
             st.error("These rows do not look correct:")
             st.write(faulty_rows)
             
-        bool_cd_c, faulty_rows = ch.check_basic_types(df_c)
-        if (bool_cd_i):
-            st.success("Check passed")
-        else:
-            st.error("These rows do not look correct:")
-            st.write(faulty_rows)
+        
         
     
     #DC function here, returns new df with wrong rows, input dataframe from upload
