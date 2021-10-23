@@ -7,10 +7,11 @@ import checks as ch
 header = st.container()
 get_file = st.container()
 basic_check = st.container()
+role_code_check = st.container()
 year_check = st.container()
 birth_date_check = st.container()
 appointment_date_check = st.container()
-role_code_check = st.container()
+
 
 
 
