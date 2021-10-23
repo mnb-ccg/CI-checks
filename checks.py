@@ -97,6 +97,7 @@ def date_split(date):
         split_date = date.split("-")
     except AttributeError:
         print("AttributeError, most likely nan value")
+        split_date = []
         
 
     if(len(split_date) == 3):
