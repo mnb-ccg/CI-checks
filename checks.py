@@ -123,7 +123,7 @@ def check_date_format(date):
         months_b1 = (int(months) <= 12)
         
         years_b0 = (len(years) == 4)
-        years_b1 = ( (int(years)<2020) and (int(years)>1900))
+        years_b1 = ( (int(years)=<2030) and (int(years)>1900))
         
         bool_cd = (days_b0 and days_b1 and months_b0 and months_b1 and  years_b0 and years_b1)
         return bool_cd
