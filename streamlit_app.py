@@ -16,14 +16,16 @@ year_check = st.container()
 
 
 my_expander = st.expander(label='Expand me')
-with my_expander:
-    'Hello there!'
-    clicked = st.button('Click me!')
+
 
 
 
 with header:
     st.title("Data Self-Checking App")
+    
+    with my_expander:
+        'Hello there!'
+        clicked = st.button('Click me!')
     st.write("When you upload your data, this app will make a series of check.")
     st.write("For every check, a green, yellow or red box will appear. Green indicates succes, yellow a warning, and red an error.")
     st.write("Hopefully the feedback from these automatic checks are useful!")
