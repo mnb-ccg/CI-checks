@@ -8,6 +8,7 @@ header = st.container()
 guide = st.container()
 
 get_file = st.container()
+type_check = st.container()
 
 st.markdown("---")
 
@@ -22,6 +23,7 @@ appointment_date_check = st.container()
 nationality_check = st.container()
 year_check = st.container()
 
+type_check = st.container()
 
 
 with header:
@@ -58,7 +60,11 @@ with get_file:
             st.error("No 'Individual' sheet found. Check to see if this is the correct file, and check spelling")
         if(file_bool_c == False):
             st.error("No 'Company' sheet found. Check to see if this is the correct file, and check spelling")
-        
+
+
+with type_check:
+    types = fs.get_types()
+    st.write(types.head())
     
 with basic_check:
     column_check_i = False
@@ -72,6 +78,9 @@ with basic_check:
         if (file_bool_c):
             column_check_c = ch.column_check(df_c, 'Company')
             
+            
+
+    
 with role_code_check:
     bool_rc = False
     if(column_check_i & column_check_c):
@@ -171,5 +180,26 @@ with year_check:
             st.write(faulty_rows_c)
 
 
+with type_check:
+    bool_cy_i = False
+    bool_cy_c = False
+    if(column_check_i & column_check_c):
+
+        st.subheader("'year' - Check" )
+        
+        bool_cy_i, faulty_rows_i = ch.check_year(df_i)
+        if (bool_cy_i):
+            st.success("'Individual' - 'year', check passed")
+        else:
+            st.error("These rows do not look correct:")
+            st.write(faulty_rows_i)
+            
+        bool_cy_c, faulty_rows_c = ch.check_year(df_c)
+        if (bool_cy_c):
+            st.success("'Company' - 'year', check passed")
+        else:
+            st.error("These rows do not look correct:")
+            st.write(faulty_rows_c)
+    
     
     #DC function here, returns new df with wrong rows, input dataframe from upload

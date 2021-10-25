@@ -1,0 +1,33 @@
+current_shares_total_value	current_options_number	current_options_value	currency	base_salary	bonus	total	award_total_value	award_options	award_shares	award_performance	award_restricted	pension_total	other_monetary	other_non_monetary	row_id
+
+company_id, string
+company_name, string
+year, int
+person_id, string
+name, string
+annual_report, int
+
+birth_date, string
+gender, string
+nationality, string
+role_code, string
+position, string
+election_form, string
+independent, string?
+
+on_board, int
+appointment_date, string
+nomination, string
+audit, string
+remuneration, string
+risk, string
+step_down, string
+months_serving, int
+comment, string
+A_shares, string
+current_shares_A_number, int
+current_shares_A_value, int
+current_shares_B_number, int
+current_shares_B_value, int
+current_shares_total_number, int
+

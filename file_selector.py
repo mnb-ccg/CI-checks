@@ -47,6 +47,9 @@ def upload_file():
             
     return df_i, df_c, file_bool_i, file_bool_c, upload_bool
 
+def get_types():
+    types_df = pd.read_excel("types.xlsx", engine="openpyxl", sheet_name='individual')
+    return types_df
 
 def filter_an_report(df):
     new_df = df[df['annual_report'] == 1]
