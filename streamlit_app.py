@@ -34,7 +34,7 @@ with header:
 with guide:
     st.subheader("Tutorial")
     st.write("The behind this app is to minimize time spent correcting data sent to CBS-CCG, allowing our suppliers to deliver high-quality data on time!")
-    st.write("You can upload the datasheet in the box. When you have done so, the app will make a series of automated checks according to the manual sent to our suppliers.")
+    st.write("You can upload the datasheet in the drag-and-drop box under the Tutorial section. When you have done so, the app will make a series of automated checks according to the manual sent to our suppliers.")
     st.write("Include link here?")
     st.write("For every check, a green, yellow or red box will appear.")
     st.success("Green indicates success, or the check has passed, meaning that the automated check is satisfied.")
