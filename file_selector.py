@@ -48,9 +48,58 @@ def upload_file():
     return df_i, df_c, file_bool_i, file_bool_c, upload_bool
 
 def get_types():
-    types_df = pd.read_excel("types.xlsx", engine="openpyxl", sheet_name='individual')
-    return types_df
+    types_r = types
+    return types_r
 
 def filter_an_report(df):
     new_df = df[df['annual_report'] == 1]
     return new_df
+
+
+
+
+types = [
+        ['company_id', 'str'],
+        ['company_name', 'str'],
+        ['year', 'int'],
+        ['person_id', 'str'],
+        ['name', 'str'],
+        ['annual_report', 'dummy'],
+        ['birth_date', 'str'],
+        ['gender', 'str'],
+        ['nationality',	'str'],
+        ['role_code', 'str'],
+        ['position', 'str'],
+        ['election_form', 'str'],
+        ['independent', 'str'],
+        ['on_board', 'dummy'],
+        ['appointment_date', 'str'],
+        ['nomination',	'str'],
+        ['audit', 'str'],
+        ['remuneration', 'str'],
+        ['risk', 'str'],
+        ['step_down', 'str'],
+        ['months_serving', 'int'],
+        ['comment', 'str'],
+        ['current_shares_A_number', 'int'],
+        ['current_shares_A_value', 'int'],
+        ['current_shares_B_number', 'int'],
+        ['current_shares_B_value', 'int'],
+        ['current_shares_total_number', 'int'],
+        ['current_shares_total_value', 'int'],
+        ['current_options_number', 'int'],
+        ['current_options_value', 'int'],
+        ['currency', 'str'],
+        ['base_salary', 'int'],
+        ['bonus', 'int'],
+        ['total', 'int'],
+        ['award_total_value', 'int'],
+        ['award_options', 'dummy'],
+        ['award_shares', 'dummy'],
+        ['award_performance', 'dummy'],
+        ['award_restricted', 'dummy'],
+        ['pension_total', 'int'],
+        ['other_monetary', 'str'],
+        ['other_non_monetary', 'str'],
+        ['row_id', 'no check'],
+    ]

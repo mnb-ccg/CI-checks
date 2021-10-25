@@ -180,26 +180,7 @@ with year_check:
             st.write(faulty_rows_c)
 
 
-with type_check:
-    bool_cy_i = False
-    bool_cy_c = False
-    if(column_check_i & column_check_c):
 
-        st.subheader("'year' - Check" )
-        
-        bool_cy_i, faulty_rows_i = ch.check_year(df_i)
-        if (bool_cy_i):
-            st.success("'Individual' - 'year', check passed")
-        else:
-            st.error("These rows do not look correct:")
-            st.write(faulty_rows_i)
-            
-        bool_cy_c, faulty_rows_c = ch.check_year(df_c)
-        if (bool_cy_c):
-            st.success("'Company' - 'year', check passed")
-        else:
-            st.error("These rows do not look correct:")
-            st.write(faulty_rows_c)
     
     
     #DC function here, returns new df with wrong rows, input dataframe from upload
