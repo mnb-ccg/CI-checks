@@ -15,9 +15,10 @@ nationality_check = st.container()
 year_check = st.container()
 
 
-my_expander = st.expander()
-my_expander.write('Hello there!')
-clicked = my_expander.button('Click me!')
+my_expander = st.expander(label='Expand me')
+with my_expander:
+    'Hello there!'
+    clicked = st.button('Click me!')
 
 
 
