@@ -64,7 +64,7 @@ with get_file:
 
 with type_check:
     types = fs.get_types()
-    st.write(types)
+    st.write(types[0])
     
 with basic_check:
     column_check_i = False
