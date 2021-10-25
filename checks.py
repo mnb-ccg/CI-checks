@@ -177,7 +177,7 @@ def check_role_code(df):
 
 ###
 def check_position_format(inp):
-    board_pos = ['CHAIRMAN', 'VICECHAIRMAN', 'BOARD MEMBER']
+    board_pos = ['CHAIRMAN', 'VICECHAIRMAN', 'BOARD MEMBER', 'DEPUTY BOARD MEMBER']
     
     rc, pos = inp.split(",")
     
