@@ -5,6 +5,8 @@ import file_selector as fs
 import checks as ch
 
 header = st.container()
+guide = st.expander(label = "How does it work?")
+
 get_file = st.container()
 
 st.markdown("---")
@@ -24,11 +26,22 @@ year_check = st.container()
 
 with header:
     st.title("Data Self-Checking App")
+    st.write("Hello, and welcome to the CBS-CCG data-checking app. If you're new, expand the section below for some instructions")
     
     
-    st.write("When you upload your data, this app will make a series of check.")
-    st.write("For every check, a green, yellow or red box will appear. Green indicates succes, yellow a warning, and red an error.")
+
+
+with guide:
+    st.write("The behind this app is to minimize time spent correcting data sent to CBS-CCG, allowing our suppliers to deliver high-quality data on time!")
+    st.write("You can upload the datasheet in the box. When you have done so, the app will make a series of automated checks according to the manual sent to our suppliers.")
+    st.write("Include link here?")
+    st.write("For every check, a green, yellow or red box will appear: Green indicates succes, yellow a warning, and red an error.")
+    st.succes("Green indicates success, or the check has passed, meaning that the automated check is satisfied.")
+    st.warning("Yellow indicates a warning. These are rare at the moment, but indicates something the we think the supplier should be aware of")
+    st.error("Red indicates and error, and the issue should be resolved before sending the data to CBS-CCG.")
+    st.write("Time and effort was put into this app in order to help our suppliers. But the app is not perfect. If you disagree with the checks or find any bugs, let us know at....")
     st.write("Hopefully the feedback from these automatic checks are useful!")
+    
 
 
 with get_file:
