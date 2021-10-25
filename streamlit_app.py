@@ -7,6 +7,9 @@ import checks as ch
 header = st.container()
 get_file = st.container()
 basic_check = st.container()
+
+st.markdown("---")
+
 role_code_check = st.container()
 position_check = st.container()
 birth_date_check = st.container()
@@ -15,17 +18,11 @@ nationality_check = st.container()
 year_check = st.container()
 
 
-my_expander = st.expander(label='Expand me')
-
-
-
 
 with header:
     st.title("Data Self-Checking App")
     
-    with my_expander:
-        'Hello there!'
-        clicked = st.button('Click me!')
+    
     st.write("When you upload your data, this app will make a series of check.")
     st.write("For every check, a green, yellow or red box will appear. Green indicates succes, yellow a warning, and red an error.")
     st.write("Hopefully the feedback from these automatic checks are useful!")
