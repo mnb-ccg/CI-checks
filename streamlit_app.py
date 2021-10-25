@@ -12,6 +12,7 @@ position_check = st.container()
 year_check = st.container()
 birth_date_check = st.container()
 appointment_date_check = st.container()
+nationality_check = st.container()
 
 
 
@@ -133,7 +134,21 @@ with appointment_date_check:
             st.write(faulty_rows)
             
 
-
+with nationality_check:
+    bool_cn = False
+    if(column_check_i & column_check_c):
+        st.subheader("'Individual' - 'nationality' check" )
         
+        bool_cn, faulty_rows = ch.check_nationality(df_i)
+        if (bool_cn):
+            st.success("Check passed")
+        else:
+            st.error("These rows do not look correct:")
+            st.write(faulty_rows)
+
+
+
+
+
     
     #DC function here, returns new df with wrong rows, input dataframe from upload

@@ -154,6 +154,7 @@ def check_date(df, column):
     return bool_cd, faulty_rows
 ###
 
+
 ###
 def check_rc_format(rc):
     if (type(rc) == float):
@@ -200,4 +201,26 @@ def check_position(df):
     bool_cd = df_check.all()
     faulty_rows = df[df_check == False]
     return bool_cd, faulty_rows
+###
+
+
+
+
+###
+def check_nationality_format(nat):
+    if (type(nat) == float and math.isnan(nat)) :
+        return True
+    elif(len(nat) == 2):
+        return True
+    else:
+        return False
+    
+    
+
+def check_nationality(df):
+    new_df = df.copy()
+    df_check = new_df['nationality'].apply(check_nationality_format)
+    bool_nat = df_check.all()
+    faulty_rows = df[df_check == False]
+    return bool_nat, faulty_rows
 ###
