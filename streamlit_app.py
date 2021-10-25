@@ -64,7 +64,9 @@ with get_file:
 
 with type_check:
     types = fs.get_types()
-    st.write(types[0])
+    for ent in types:
+        if(ent[1] == 'str'):
+            st.write("string", ent[0])
     
 with basic_check:
     column_check_i = False
