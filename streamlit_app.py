@@ -64,9 +64,11 @@ with get_file:
 
 with type_check:
     types = fs.get_types()
-    for ent in types:
-        if(ent[1] == 'str'):
-            st.write("string", ent[0])
+    df_check = ch.check_types(df_i, 'company_name', 'str')
+    st.write(df_check.head())
+    
+    #for ent in types:
+    #    pass
     
 with basic_check:
     column_check_i = False

@@ -223,3 +223,26 @@ def check_nationality(df):
     faulty_rows = df[df_check == False]
     return bool_nat, faulty_rows
 ###
+
+### 
+def apply_type(line, type_inp): 
+    if (type_inp == 'str'):
+        try:
+            str(line)
+        except AttributeError:
+            return "should be a string"
+    elif(type_inp == 'int'):
+        try:
+            int(line)
+        except AttributeError:
+            return "should be an int"
+    else:
+        return "type works"
+        
+    
+
+def check_types(df, column, type_inp):
+    new_df = df.copy()
+    df_check = new_df[column].apply(apply_type)
+    return df_check
+###
