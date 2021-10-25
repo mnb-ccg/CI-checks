@@ -37,9 +37,9 @@ with guide:
     st.write("You can upload the datasheet in the box. When you have done so, the app will make a series of automated checks according to the manual sent to our suppliers.")
     st.write("Include link here?")
     st.write("For every check, a green, yellow or red box will appear: Green indicates succes, yellow a warning, and red an error.")
-    st.succes("Green indicates success, or the check has passed, meaning that the automated check is satisfied.")
-    st.warning("Yellow indicates a warning. These are rare at the moment, but indicates something the we think the supplier should be aware of")
-    st.error("Red indicates and error, and the issue should be resolved before sending the data to CBS-CCG.")
+    st.write("Green indicates success, or the check has passed, meaning that the automated check is satisfied.")
+    st.write("Yellow indicates a warning. These are rare at the moment, but indicates something the we think the supplier should be aware of")
+    st.write("Red indicates and error, and the issue should be resolved before sending the data to CBS-CCG.")
     st.write("Time and effort was put into this app in order to help our suppliers. But the app is not perfect. If you disagree with the checks or find any bugs, let us know at....")
     st.write("Hopefully the feedback from these automatic checks are useful!")
     
