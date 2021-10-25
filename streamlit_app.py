@@ -9,10 +9,10 @@ get_file = st.container()
 basic_check = st.container()
 role_code_check = st.container()
 position_check = st.container()
-year_check = st.container()
 birth_date_check = st.container()
 appointment_date_check = st.container()
 nationality_check = st.container()
+year_check = st.container()
 
 
 
@@ -60,11 +60,11 @@ with role_code_check:
         #focus on the data quality on the individuals found in the annual reports
         df_i = fs.filter_an_report(df_i.copy())
         
-        st.subheader("'role_code' - Check")
+        st.subheader("'Individual' - 'role_code' - Check")
         
         bool_rc, faulty_rows_rc = ch.check_role_code(df_i)
         if (bool_rc):
-            st.success("'Individual' - 'role_code', check passed")
+            st.success("Check passed")
             bool_rc = True
         else:
             st.error("These rows do not look correct:")
@@ -74,37 +74,18 @@ with role_code_check:
 with position_check:
     bool_pos = False
     if(column_check_i & column_check_c):
-        st.subheader("'position' - Check")
+        st.subheader("'Individual' - 'position' - Check")
         
         bool_pos, faulty_rows_pos = ch.check_position(df_i)
         if (bool_pos):
-            st.success("'Individual' - 'position', check passed")
+            st.success("Check passed")
         else:
             st.error("These rows do not look correct:")
             st.write(faulty_rows_pos)
     
      
         
-with year_check:
-    bool_cy_i = False
-    bool_cy_c = False
-    if(column_check_i & column_check_c):
 
-        st.subheader("'year' - Check" )
-        
-        bool_cy_i, faulty_rows_i = ch.check_year(df_i)
-        if (bool_cy_i):
-            st.success("'Individual' - 'year', check passed")
-        else:
-            st.error("These rows do not look correct:")
-            st.write(faulty_rows_i)
-            
-        bool_cy_c, faulty_rows_c = ch.check_year(df_c)
-        if (bool_cy_c):
-            st.success("'Company' - 'year', check passed")
-        else:
-            st.error("These rows do not look correct:")
-            st.write(faulty_rows_c)
             
 
 with birth_date_check:
@@ -147,7 +128,26 @@ with nationality_check:
             st.write(faulty_rows)
 
 
+with year_check:
+    bool_cy_i = False
+    bool_cy_c = False
+    if(column_check_i & column_check_c):
 
+        st.subheader("'year' - Check" )
+        
+        bool_cy_i, faulty_rows_i = ch.check_year(df_i)
+        if (bool_cy_i):
+            st.success("'Individual' - 'year', check passed")
+        else:
+            st.error("These rows do not look correct:")
+            st.write(faulty_rows_i)
+            
+        bool_cy_c, faulty_rows_c = ch.check_year(df_c)
+        if (bool_cy_c):
+            st.success("'Company' - 'year', check passed")
+        else:
+            st.error("These rows do not look correct:")
+            st.write(faulty_rows_c)
 
 
     

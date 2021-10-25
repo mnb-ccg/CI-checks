@@ -205,7 +205,6 @@ def check_position(df):
 
 
 
-
 ###
 def check_nationality_format(nat):
     if (type(nat) == float and math.isnan(nat)) :
