@@ -6,6 +6,9 @@ import checks as ch
 
 header = st.container()
 get_file = st.container()
+
+st.markdown("---")
+
 basic_check = st.container()
 
 st.markdown("---")
