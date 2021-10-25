@@ -101,6 +101,7 @@ with position_check:
             st.success("Check passed")
         else:
             st.error("These rows do not look correct:")
+            print(faulty_rows_pos)
             st.write(faulty_rows_pos)
     
      
