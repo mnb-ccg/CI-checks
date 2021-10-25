@@ -5,7 +5,7 @@ import file_selector as fs
 import checks as ch
 
 header = st.container()
-guide = st.expander(label = "How does it work?")
+guide = st.container()
 
 get_file = st.container()
 
@@ -32,6 +32,7 @@ with header:
 
 
 with guide:
+    st.subheader("Tutorial")
     st.write("The behind this app is to minimize time spent correcting data sent to CBS-CCG, allowing our suppliers to deliver high-quality data on time!")
     st.write("You can upload the datasheet in the box. When you have done so, the app will make a series of automated checks according to the manual sent to our suppliers.")
     st.write("Include link here?")
