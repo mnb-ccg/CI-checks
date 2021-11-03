@@ -96,7 +96,6 @@ with type_check:
                 df_check = ch.check_type(df_i, column, type_c)
                 df_type_check[column] = df_check
         df_type_check['feedback'] = df_type_check[df_type_check.columns.tolist()].agg(' '.join, axis=1)
-        st.write(df_type_check['feedback'].head())
 
     
 with role_code_check:
@@ -111,7 +110,7 @@ with position_check:
         
         df_check = ch.check_position(df_i)
         df_type_check['feedback'] = df_type_check['feedback'] + df_check
-    
+        st.write(df_type_check['feedback'])
      
         
 
