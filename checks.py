@@ -220,7 +220,7 @@ def check_nationality_format(nat):
     elif(len(nat) == 2):
         return comment
     else:
-        comment = "nationality: Should adhere to the twoletter ISO2 codes, e.g. US | "
+        comment = "nationality: Should adhere to the two letter ISO2 codes, e.g. US | "
         return comment
     
     
