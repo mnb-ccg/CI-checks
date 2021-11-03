@@ -227,6 +227,9 @@ def check_nationality(df):
 ### 
 def apply_type(line, type_inp):
     comment = ""
+    if(type(line) == float and math.isnan(line)):
+        return comment
+    
     if(type_inp == 'int'):
         try:
             int(line)
