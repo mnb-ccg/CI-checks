@@ -70,7 +70,8 @@ with type_check:
             df_check = ch.check_type(df_i, column, type_c)
             st.write(df_check.shape)
             df_type_check[column] = df_check
-        st.write(df_type_check.shape)
+    st.write(df_type_check.shape)
+    st.write(df_type_check.head())
             
     
     #for ent in types:
