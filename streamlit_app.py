@@ -110,7 +110,7 @@ with position_check:
         
         df_check = ch.check_position(df_i)
         st.write(df_check)
-        df_type_check['feedback'] = df_type_check['feedback'] + df_check.to_frame()['position']
+        df_type_check['feedback'] = df_type_check['feedback'] + df_check.to_frame()['key']
         st.write("hello")
         st.write(df_type_check['feedback'][0])
      
