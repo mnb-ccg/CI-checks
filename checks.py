@@ -226,7 +226,6 @@ def check_nationality(df):
 
 ### 
 def apply_type(line, type_inp):
-    st.write(line)
     if (type_inp == 'str'):
         try:
             str(line)
