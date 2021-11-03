@@ -110,7 +110,7 @@ with position_check:
         
         df_check = ch.check_position(df_i)
         df_type_check['feedback'] = df_type_check['feedback'] + df_check
-        st.write(df_type_check['feedback'].notna())
+        st.write(df_type_check['feedback'])
      
         
 
