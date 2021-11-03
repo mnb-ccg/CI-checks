@@ -1,5 +1,5 @@
 import streamlit as st
-#mport pandas as pd
+import pandas as pd
 #import importing_files as imfil
 import file_selector as fs
 import checks as ch
@@ -63,11 +63,13 @@ with get_file:
 
 with type_check:
     types = fs.get_types()
+    df_type_check = pd.Dataframe()
     for column, type_c in types:
         if(type_c != 'str' and type_c != 'no check'):
-            st.write(type_c)
-            #df_check = ch.check_type(df_i, column, type_c)
-            #st.write(df_check.head())
+            df_check = ch.check_type(df_i, column, type_c)
+            df_type_check.append(df_check)
+    st.write(df_type_check.shape)
+            
     
     #for ent in types:
     #    pass
