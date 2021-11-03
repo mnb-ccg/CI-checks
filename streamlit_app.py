@@ -70,7 +70,7 @@ with type_check:
             columns_checked.append(column)
             df_check = ch.check_type(df_i, column, type_c)
             df_type_check[column] = df_check
-    df_type_check['feedback'] = df_type_check[df_type_check.columns.tolist()].agg(' :: '.join, axis=1)
+    df_type_check['feedback'] = df_type_check[df_type_check.columns.tolist()].agg(' || '.join, axis=1)
     st.write(df_type_check['feedback'].head())
             
     
