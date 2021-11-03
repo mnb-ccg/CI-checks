@@ -64,13 +64,14 @@ with get_file:
 with type_check:
     types = fs.get_types()
     df_type_check = pd.DataFrame()
+    columns_checked = []
     for column, type_c in types:
         if(type_c != 'str' and type_c != 'no check'):
+            columns_checked.append(column)
             df_check = ch.check_type(df_i, column, type_c)
             df_type_check[column] = df_check
-    for i in range(df_type_check.shape[1]):
-        st.write(i)
-    #df_type_check['feedback'] = df_type_check[2:]
+    df_type_check['feedback'] = df_type_check[df_type_check.columns.tolist()].agg('-'.join, axis=1)
+    st.write(df_type_check['feedback'].head())
             
     
     #for ent in types:
