@@ -63,6 +63,7 @@ with get_file:
 
 with type_check:
     types = fs.get_types()
+    st.write(types[0])
     df_check = ch.check_type(df_i, 'year', 'int')
     st.write(df_check.head())
     
