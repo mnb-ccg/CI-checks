@@ -63,7 +63,7 @@ with get_file:
 
 with type_check:
     types = fs.get_types()
-    df_type_check = pd.DataFrame()
+    df_type_check = df_i['company_id']
     for column, type_c in types:
         if(type_c != 'str' and type_c != 'no check'):
             df_check = ch.check_type(df_i, column, type_c)
