@@ -102,6 +102,7 @@ with role_code_check:
     if(column_check_i & column_check_c):
         
         df_check = ch.check_role_code(df_i)
+        st.write(df_check)
         df_type_check['feedback'] = df_type_check['feedback'] + df_check
         
 
@@ -110,6 +111,7 @@ with position_check:
         
         df_check = ch.check_position(df_i)
         df_type_check['feedback'] = df_type_check['feedback'] + df_check
+        st.write("hello")
         st.write(df_type_check['feedback'][0])
      
         
