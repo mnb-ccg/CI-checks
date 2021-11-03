@@ -226,14 +226,7 @@ def check_nationality(df):
 
 ### 
 def apply_type(line, type_inp):
-    return True
-    if (type_inp == 'str'):
-        try:
-            str(line)
-        except AttributeError:
-            st.write(line)
-            return False
-    elif(type_inp == 'int'):
+    if(type_inp == 'int'):
         try:
             int(line)
         except AttributeError:
@@ -246,7 +239,7 @@ def apply_type(line, type_inp):
 
 def check_types(df, column, type_inp):
     new_df = df.copy()
-    df_check = new_df.apply(lambda x: apply_type(x[column], type_inp='str'), axis=1)
+    df_check = new_df.apply(lambda x: apply_type(x[column], type_inp), axis=1)
     st.write(df_check)
     return df_check
 ###
