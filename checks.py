@@ -244,6 +244,6 @@ def apply_type(line, type_inp):
 
 def check_types(df, column, type_inp):
     new_df = df.copy()
-    df_check = new_df[column].apply(lambda x: apply_type(x, column, type_inp), axis=1)
+    df_check = new_df[column].apply(apply_type(type_inp='str'))
     return df_check
 ###
