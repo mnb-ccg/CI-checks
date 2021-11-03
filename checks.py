@@ -225,22 +225,18 @@ def check_nationality(df):
 ###
 
 ### 
-def apply_type(line, type_inp):
-    if(type_inp == 'int'):
-        try:
-            int(line)
-            return True
-        except ValueError:
-            st.write( "should be an int")
-            return False
-    else:
+def apply_int(line, type_inp):
+    try:
+        int(line)
         return True
-        
+    except (ValueError, TypeError):
+        st.write( "should be an int")
+        return False    
     
 
-def check_types(df, column, type_inp):
+def check_int(df, column):
     new_df = df.copy()
-    df_check = new_df.apply(lambda x: apply_type(x[column], type_inp), axis=1)
+    df_check = new_df.apply(lambda x: apply_int(x[column]), axis=1)
     st.write(df_check)
     return df_check
 ###
