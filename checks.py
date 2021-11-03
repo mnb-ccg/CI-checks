@@ -186,19 +186,15 @@ def check_position_format(inp):
     
     if ((rc == "nan") or (pos == "nan")):
         comment = "position: Should not be empty |"
-        st.write(1)
         return comment
         
     elif((rc == 'EXECUTIVE') and (len(pos)>0)):
-        st.write(2)
         return comment
     
     elif ((rc == 'BOARD') and (pos in board_pos)):
-        st.write(3, pos)
         return comment
     
     else: 
-        st.write(4)
         comment = "position: Does not fit specifications, e.g. if role_code = 'BOARD', must be e.g. 'CHAIRMAN' or 'BOARD MEMBER' |"
         return comment
 
