@@ -226,12 +226,13 @@ def check_nationality(df):
 
 ### 
 def apply_int(line):
+    comment = ""
     try:
         int(line)
-        return True
+        return comment
     except (ValueError, TypeError):
-        st.write( "should be an int")
-        return False    
+        comment = "should be an int"
+        return comment    
     
 
 def check_int(df, column):
