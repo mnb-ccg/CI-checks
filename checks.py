@@ -194,7 +194,7 @@ def check_position_format(inp):
         return comment
     
     elif ((rc == 'BOARD') and (pos in board_pos)):
-        st.write(3)
+        st.write(3, pos)
         return comment
     
     else: 
