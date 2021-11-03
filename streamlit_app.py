@@ -69,7 +69,7 @@ with type_check:
             st.write(column, type_c)
             df_check = ch.check_type(df_i, column, type_c)
             st.write(df_check.shape)
-            df_type_check.concat(df_check)
+            df_type_check.assign(column = df_check)
         st.write(df_type_check.shape)
             
     
