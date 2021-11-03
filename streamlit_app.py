@@ -21,7 +21,7 @@ role_code_check = st.container()
 position_check = st.container()
 date_check = st.container()
 nationality_check = st.container()
-# year_check = st.container()
+year_check = st.container()
 
 
 
@@ -121,7 +121,6 @@ with date_check:
         
         df_check = ch.check_date(df_i, 'appointment_date')
         df_type_check['feedback'] = df_type_check['feedback'] + df_check.to_frame()[0]
-        st.write(df_type_check.feedback)
 
 
 
@@ -130,31 +129,15 @@ with date_check:
 with nationality_check:
     if(column_check_i & column_check_c):
         df_check = ch.check_nationality(df_i)
-        st.write(df_check)
-        df_type_check['feedback'] = df_type_check['feedback'] + df_check.to_frame()['nationality']
+        df_type_check['feedback'] = df_type_check['feedback'] + df_check.to_frame()[0]
         st.write(df_type_check.feedback)
 
 
-# with year_check:
-#     bool_cy_i = False
-#     bool_cy_c = False
-#     if(column_check_i & column_check_c):
-
-#         st.subheader("'year' - Check" )
-        
-#         bool_cy_i, faulty_rows_i = ch.check_year(df_i)
-#         if (bool_cy_i):
-#             st.success("'Individual' - 'year', check passed")
-#         else:
-#             st.error("These rows do not look correct:")
-#             st.write(faulty_rows_i)
-            
-#         bool_cy_c, faulty_rows_c = ch.check_year(df_c)
-#         if (bool_cy_c):
-#             st.success("'Company' - 'year', check passed")
-#         else:
-#             st.error("These rows do not look correct:")
-#             st.write(faulty_rows_c)
+with year_check:
+    if(column_check_i & column_check_c):
+        df_check = ch.check_nationality(df_i)
+        df_type_check['feedback'] = df_type_check['feedback'] + df_check.to_frame()[0]
+        st.write(df_type_check.feedback)
 
 
 
