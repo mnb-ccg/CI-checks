@@ -227,11 +227,9 @@ def check_nationality(df):
 ### 
 def apply_type(line, type_inp):
     if(type_inp == 'int'):
-        return True
         try:
             int(line)
             return True
-            st.write(line)
         except AttributeError:
             st.write( "should be an int")
             return False
