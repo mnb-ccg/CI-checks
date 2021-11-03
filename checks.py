@@ -243,7 +243,7 @@ def apply_type(line, type_inp):
             float(line)
             return comment
         except (ValueError, TypeError):
-            comment = "This should be a number, non-decimal or not"
+            comment = "This should be a number, non-decimal or whole number"
             return comment
         
     elif(type_inp == 'dummy'):
