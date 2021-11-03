@@ -103,7 +103,7 @@ with role_code_check:
         
         df_check = ch.check_role_code(df_i)
         st.write(df_check)
-        df_type_check['feedback'] = df_type_check['feedback'] + df_check.to_frame().['role_code']
+        df_type_check['feedback'] = df_type_check['feedback'] + df_check.to_frame()['role_code']
         
 
 with position_check:
