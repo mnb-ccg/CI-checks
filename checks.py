@@ -230,14 +230,16 @@ def apply_type(line, type_inp):
         try:
             str(line)
         except AttributeError:
-            return "should be a string"
+            st.write(line)
+            return False
     elif(type_inp == 'int'):
         try:
             int(line)
         except AttributeError:
-            return "should be an int"
+            st.write( "should be an int")
+            return False
     else:
-        return "type works"
+        return True
         
     
 
