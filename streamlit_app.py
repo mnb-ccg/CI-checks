@@ -63,12 +63,12 @@ with get_file:
 
 with type_check:
     types = fs.get_types()
-    df_type_check = df_i['company_id']
+    df_type_check = df_i[['company_id', 'company_name']]
     for column, type_c in types:
         if(type_c != 'str' and type_c != 'no check'):
             df_check = ch.check_type(df_i, column, type_c)
             df_type_check.append(df_check)
-            st.write(df_type_check.shape)
+        st.write(df_type_check.shape)
             
     
     #for ent in types:
