@@ -230,7 +230,7 @@ def apply_type(line, type_inp):
         try:
             int(line)
             return True
-        except AttributeError:
+        except ValueError:
             st.write( "should be an int")
             return False
     else:
