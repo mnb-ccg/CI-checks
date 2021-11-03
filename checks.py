@@ -160,7 +160,7 @@ def check_rc_format(rc):
     comment = ""
     if (type(rc) == float):
         if(math.isnan(rc)):
-            return False
+            return comment
         
     if(rc == 'EXECUTIVE' or rc == 'BOARD'):
         return comment
