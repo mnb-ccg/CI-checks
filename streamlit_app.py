@@ -82,7 +82,7 @@ with basic_check:
 with type_check:
     df_type_check = pd.DataFrame()
     if(column_check_i & column_check_c):
-        st.header("Row-by-Row Checks")
+        
         #now that we know that the dataset conforms to our format, we can now 
         #focus on the data quality on the individuals found in the annual reports
         df_i = fs.filter_an_report(df_i.copy())
@@ -110,7 +110,7 @@ with position_check:
         
         df_check = ch.check_position(df_i)
         df_type_check['feedback'] = df_type_check['feedback'] + df_check
-        st.write(df_type_check['feedback'])
+        st.write(df_type_check['feedback'].notna())
      
         
 
