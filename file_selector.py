@@ -8,6 +8,7 @@ Created on Thu Sep 23 15:53:28 2021
 import streamlit as st
 import pandas as pd
 import os
+import base64
 from xlrd import open_workbook, XLRDError
 
 
@@ -56,7 +57,15 @@ def filter_an_report(df):
     return new_df
 
 
-
+def get_table_download_link(df):
+    """Generates a link allowing the data in a given panda dataframe to be downloaded
+    in:  dataframe
+    out: href string
+    """
+    csv = df.to_csv(index=False)
+    b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
+    href = f'<a href="data:file/csv;base64,{b64}">Download csv file</a>'
+    return href
 
 types = [
         ['company_id', 'str'],

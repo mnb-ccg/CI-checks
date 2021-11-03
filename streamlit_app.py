@@ -22,6 +22,7 @@ position_check = st.container()
 date_check = st.container()
 nationality_check = st.container()
 year_check = st.container()
+downloader = st.container()
 
 
 
@@ -135,14 +136,15 @@ with nationality_check:
 with year_check:
     if(column_check_i & column_check_c):
         df_check = ch.check_year(df_i)
-        st.write(df_check)
         df_type_check['feedback'] = df_type_check['feedback'] + df_check.to_frame()['year']
-        st.write(df_type_check.feedback)
 
 
 
-    
-    
+with downloader:
+    if(column_check_i & column_check_c):
+        df_i['feedback'] = df_type_check['feedback']
+        st.markdown(fs.get_table_download_link(df_i), unsafe_allow_html=True)
+        
     #DC function here, returns new df with wrong rows, input dataframe from upload
     
     
