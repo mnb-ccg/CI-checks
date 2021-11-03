@@ -63,15 +63,12 @@ with get_file:
 
 with type_check:
     types = fs.get_types()
-    df_type_check = df_i[['company_id', 'company_name']]
+    df_type_check = pd.DataFrame()
     for column, type_c in types:
         if(type_c != 'str' and type_c != 'no check'):
-            st.write(column, type_c)
             df_check = ch.check_type(df_i, column, type_c)
-            st.write(df_check.shape)
             df_type_check[column] = df_check
-    st.write(df_type_check.shape)
-    st.write(df_type_check.head())
+    #df_type_check['feedback'] = df_type_check[2:]
             
     
     #for ent in types:
