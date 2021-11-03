@@ -196,7 +196,7 @@ def check_position_format(inp):
     
     else: 
         comment = "position: Does not fit specifications, e.g. if role_code = 'BOARD', must be e.g. 'CHAIRMAN' or 'BOARD MEMBER' |"
-        return False
+        return comment
 
 
 def check_position(df):
