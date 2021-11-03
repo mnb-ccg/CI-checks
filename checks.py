@@ -225,19 +225,46 @@ def check_nationality(df):
 ###
 
 ### 
-def apply_int(line):
+def apply_type(line, type_inp):
     comment = ""
-    try:
-        int(line)
+    if(type_inp == 'int'):
+        try:
+            int(line)
+            return comment
+        except (ValueError, TypeError):
+            comment = "This should be a non-decimal number"
+            return comment  
+        
+    elif(type_inp == 'float'):
+        try:
+            float(line)
+            return comment
+        except (ValueError, TypeError):
+            comment = "This should be a number, non-decimal or not"
+            return comment
+        
+    elif(type_inp == 'dummy'):
+        try:
+            dummy = int(line)
+            if(dummy == 0 or dummy == 1):
+                return comment
+            else:
+                comment = "This should be either a 0 or a 1"
+                return comment
+        except (ValueError, TypeError):
+            comment = "This should be a non-decimal number between 0-1"
+            return comment
+        
+    else:
         return comment
-    except (ValueError, TypeError):
-        comment = "should be an int"
-        return comment    
+
+        
     
 
-def check_int(df, column):
+def check_type(df, column, type_inp):
     new_df = df.copy()
-    df_check = new_df.apply(lambda x: apply_int(x[column]), axis=1)
+    df_check = new_df.apply(lambda x: apply_type(x[column], type_inp), axis=1)
     st.write(df_check)
     return df_check
+    
 ###
