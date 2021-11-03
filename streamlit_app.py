@@ -129,9 +129,7 @@ with date_check:
 with nationality_check:
     if(column_check_i & column_check_c):
         df_check = ch.check_nationality(df_i)
-        st.write(df_check)
         df_type_check['feedback'] = df_type_check['feedback'] + df_check.to_frame()['nationality']
-        st.write(df_type_check.feedback)
 
 
 with year_check:

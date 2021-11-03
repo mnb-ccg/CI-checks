@@ -88,17 +88,17 @@ def column_check(df, sheet):
 
 ###
 def check_year_length(year):
+    comment = ""
     if(len(str(year)) == 4):
-        return True
+        return comment
     if(len(str(year)) != 4):
-        return False
+        comment = "year: Not correct format, should be a 4 digit number | "
+        return comment
 
 
 def check_year(df):
     df_check = df['year'].apply(check_year_length)
-    bool_cy = df_check.all()
-    faulty_rows = df[df_check == False]
-    return bool_cy, faulty_rows
+    return df_check
 ###
 
 
