@@ -63,9 +63,11 @@ with get_file:
 
 with type_check:
     types = fs.get_types()
-    st.write(types[0])
-    df_check = ch.check_type(df_i, 'year', 'int')
-    st.write(df_check.head())
+    for column, type_c in types:
+        st.write(column)
+        st.write(type_c)
+        #df_check = ch.check_type(df_i, 'year', 'int')
+        #st.write(df_check.head())
     
     #for ent in types:
     #    pass
