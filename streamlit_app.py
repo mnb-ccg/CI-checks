@@ -120,7 +120,7 @@ with birth_date_check:
     if(column_check_i & column_check_c):
         df_check = ch.check_date(df_i, 'birth_date')
         df_type_check['feedback'] = df_type_check['feedback'] + df_check.to_frame()[0]
-        st.write(df_type_check)
+        st.write(df_type_check.feedback)
 
 
             
