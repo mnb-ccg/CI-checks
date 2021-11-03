@@ -53,21 +53,21 @@ def col_standardize(columns):
 def column_check(df, sheet):
     
     df_col = df.columns.astype(str)
-    df_col_clean = col_standardize(df_col)
+    #df_col_clean = col_standardize(df_col)
     
     if(sheet == 'Individual'):
         templ_col = column_names_i
-        templ_col_clean = col_standardize(templ_col)
+        #templ_col_clean = col_standardize(templ_col)
     elif(sheet == 'Company'):
         templ_col = column_names_c
-        templ_col_clean = col_standardize(templ_col)
+        #templ_col_clean = col_standardize(templ_col)
     else:
         st.error("Sheet name not recognized")
         
     
     correct = False
-    df_set = set(df_col_clean)
-    templ_set = set(templ_col_clean)
+    df_set = set(df_col)
+    templ_set = set(templ_col)
     missing_columns = templ_set - df_set
     excess_columns = df_set - templ_set
     
