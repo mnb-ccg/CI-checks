@@ -8,16 +8,17 @@ header = st.container()
 #guide = st.container()
 
 get_file = st.container()
+
+
+st.markdown("---")
+
+basic_check = st.container()
 type_check = st.container()
 
 st.markdown("---")
 
-# basic_check = st.container()
-
-st.markdown("---")
-
-# role_code_check = st.container()
-# position_check = st.container()
+role_code_check = st.container()
+position_check = st.container()
 # birth_date_check = st.container()
 # appointment_date_check = st.container()
 # nationality_check = st.container()
@@ -61,68 +62,55 @@ with get_file:
             st.error("No 'Company' sheet found. Check to see if this is the correct file, and check spelling")
 
 
+
+            
+    
+
+with basic_check:
+    column_check_i = False
+    column_check_c = False
+    if(file_bool_i and file_bool_c):
+        st.header("Basic Columns Check")
+        st.subheader("Column Check - 'Individual'")
+        if (file_bool_i):
+            column_check_i = ch.column_check(df_i, 'Individual')
+        st.subheader("Column Check - 'Company'")
+        if (file_bool_c):
+            column_check_c = ch.column_check(df_c, 'Company')
+            
+
 with type_check:
-    types = fs.get_types()
     df_type_check = pd.DataFrame()
-    columns_checked = []
-    for column, type_c in types:
-        if(type_c != 'str' and type_c != 'no check'):
-            columns_checked.append(column)
-            df_check = ch.check_type(df_i, column, type_c)
-            df_type_check[column] = df_check
-    df_type_check['feedback'] = df_type_check[df_type_check.columns.tolist()].agg(' | '.join, axis=1)
-    st.write(df_type_check['feedback'].head())
-            
+    if(column_check_i & column_check_c):
+        st.header("Row-by-Row Checks")
+        #now that we know that the dataset conforms to our format, we can now 
+        #focus on the data quality on the individuals found in the annual reports
+        df_i = fs.filter_an_report(df_i.copy())
     
-    #for ent in types:
-    #    pass
-    
-# with basic_check:
-#     column_check_i = False
-#     column_check_c = False
-#     if(file_bool_i and file_bool_c):
-#         st.header("Basic Columns Check")
-#         st.subheader("Column Check - 'Individual'")
-#         if (file_bool_i):
-#             column_check_i = ch.column_check(df_i, 'Individual')
-#         st.subheader("Column Check - 'Company'")
-#         if (file_bool_c):
-#             column_check_c = ch.column_check(df_c, 'Company')
-            
-            
+        types = fs.get_types()
+        
+        columns_checked = []
+        for column, type_c in types:
+            if(type_c != 'str' and type_c != 'no check'):
+                columns_checked.append(column)
+                df_check = ch.check_type(df_i, column, type_c)
+                df_type_check[column] = df_check
+        df_type_check['feedback'] = df_type_check[df_type_check.columns.tolist()].agg(' '.join, axis=1)
+        st.write(df_type_check['feedback'].head())
 
     
-# with role_code_check:
-#     bool_rc = False
-#     if(column_check_i & column_check_c):
-#         st.header("Row-by-Row Checks")
-#         #now that we know that the dataset conforms to our format, we can now 
-#         #focus on the data quality on the individuals found in the annual reports
-#         df_i = fs.filter_an_report(df_i.copy())
+with role_code_check:
+    if(column_check_i & column_check_c):
         
-#         st.subheader("'Individual' - 'role_code' - Check")
-        
-#         bool_rc, faulty_rows_rc = ch.check_role_code(df_i)
-#         if (bool_rc):
-#             st.success("Check passed")
-#             bool_rc = True
-#         else:
-#             st.error("These rows do not look correct:")
-#             st.write(faulty_rows_rc)
+        df_check = ch.check_role_code(df_i)
+        df_type_check['feedback'] = df_type_check['feedback'] + df_check
         
 
-# with position_check:
-#     bool_pos = False
-#     if(column_check_i & column_check_c):
-#         st.subheader("'Individual' - 'position' - Check")
+with position_check:
+    if(column_check_i & column_check_c):
         
-#         bool_pos, faulty_rows_pos = ch.check_position(df_i)
-#         if (bool_pos):
-#             st.success("Check passed")
-#         else:
-#             st.error("These rows do not look correct:")
-#             print(faulty_rows_pos)
-#             st.write(faulty_rows_pos)
+        df_check = ch.check_position(df_i)
+        df_type_check['feedback'] = df_type_check['feedback'] + df_check
     
      
         

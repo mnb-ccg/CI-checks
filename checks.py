@@ -157,40 +157,45 @@ def check_date(df, column):
 
 ###
 def check_rc_format(rc):
+    comment = ""
     if (type(rc) == float):
         if(math.isnan(rc)):
             return False
         
     if(rc == 'EXECUTIVE' or rc == 'BOARD'):
-        return True
+        return comment
     else: 
-        return False
+        comment = "role_code: Should be either 'EXECUTIVE' or 'BOARD' |"
+        return comment
 
 
 def check_role_code(df):
     df_check = df['role_code'].apply(check_rc_format)
-    bool_cd = df_check.all()
-    faulty_rows = df[df_check == False]
-    return bool_cd, faulty_rows
+    # bool_cd = df_check.all()
+    # faulty_rows = df[df_check == False]
+    return df_check
 ###
 
 
 ###
 def check_position_format(inp):
+    comment = ""
     board_pos = ['CHAIRMAN', 'VICECHAIRMAN', 'BOARD MEMBER', 'DEPUTY BOARD MEMBER']
     
     rc, pos = inp.split(",")
     
     if ((rc == "nan") or (pos == "nan")):
-        return False
+        comment = "position: Should not be empty |"
+        return comment
         
     if((rc == 'EXECUTIVE') and (len(pos)>0)):
-        return True
+        return comment
     
     if ((rc == 'BOARD') and (pos in board_pos)):
-        return True
+        return comment
     
     else: 
+        comment = "position: Does not fit specifications, e.g. if role_code = 'BOARD', must be e.g. 'CHAIRMAN' or 'BOARD MEMBER' |"
         return False
 
 
@@ -198,9 +203,7 @@ def check_position(df):
     new_df = df.copy()
     new_df['key'] = df['role_code'].astype(str) + "," + df['position'].astype(str) 
     df_check = new_df['key'].apply(check_position_format)
-    bool_cd = df_check.all()
-    faulty_rows = df[df_check == False]
-    return bool_cd, faulty_rows
+    return df_check
 ###
 
 
@@ -235,7 +238,7 @@ def apply_type(line, column, type_inp):
             int(line)
             return comment
         except (ValueError, TypeError):
-            comment = column + ": " + "This should be a non-decimal number"
+            comment = column + ": " + "This should be a non-decimal number"  + " |"
             return comment  
         
     elif(type_inp == 'float'):
@@ -243,7 +246,7 @@ def apply_type(line, column, type_inp):
             float(line)
             return comment
         except (ValueError, TypeError):
-            comment = column + ": " +  "This should be a number, non-decimal or whole number"
+            comment = column + ": " +  "This should be a number"  + " |"
             return comment
         
     elif(type_inp == 'dummy'):
@@ -252,10 +255,10 @@ def apply_type(line, column, type_inp):
             if(dummy == 0 or dummy == 1):
                 return comment
             else:
-                comment = column + ": " +  "This should be either a 0 or a 1"
+                comment = column + ": " +  "This should be either a 0 or a 1"  + " |"
                 return comment
         except (ValueError, TypeError):
-            comment = column + ": " +  "This should be a non-decimal number between 0-1"
+            comment = column + ": " +  "This should be either 0 or 1" + " |"
             return comment
         
     else:
