@@ -19,9 +19,8 @@ st.markdown("---")
 
 role_code_check = st.container()
 position_check = st.container()
-birth_date_check = st.container()
-# appointment_date_check = st.container()
-# nationality_check = st.container()
+date_check = st.container()
+nationality_check = st.container()
 # year_check = st.container()
 
 
@@ -115,8 +114,7 @@ with position_check:
 
             
 
-with birth_date_check:
-    bool_cbd = False 
+with date_check:
     if(column_check_i & column_check_c):
         df_check = ch.check_date(df_i, 'birth_date')
         df_type_check['feedback'] = df_type_check['feedback'] + df_check.to_frame()[0]
@@ -126,31 +124,14 @@ with birth_date_check:
         st.write(df_type_check.feedback)
 
 
-            
-# with appointment_date_check:
-#     bool_cad = False 
-#     if(column_check_i & column_check_c):
-#         st.subheader("'Individual' - 'appointment_date' check" )
-        
-#         bool_cad, faulty_rows = ch.check_date(df_i, "appointment_date")
-#         if (bool_cad):
-#             st.success("Check passed")
-#         else:
-#             st.error("These rows do not look correct:")
-#             st.write(faulty_rows)
+
             
 
-# with nationality_check:
-#     bool_cn = False
-#     if(column_check_i & column_check_c):
-#         st.subheader("'Individual' - 'nationality' check" )
-        
-#         bool_cn, faulty_rows = ch.check_nationality(df_i)
-#         if (bool_cn):
-#             st.success("Check passed")
-#         else:
-#             st.error("These rows do not look correct:")
-#             st.write(faulty_rows)
+with nationality_check:
+    if(column_check_i & column_check_c):
+        df_check = ch.check_nationality(df_i)
+        df_type_check['feedback'] = df_type_check['feedback'] + df_check.to_frame()[0]
+        st.write(df_type_check.feedback)
 
 
 # with year_check:
