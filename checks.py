@@ -221,7 +221,7 @@ def check_nationality_format(nat):
         return comment
     else:
         comment = "nationality: Should adhere to the twoletter ISO2 codes, e.g. US | "
-        return False
+        return comment
     
     
 
