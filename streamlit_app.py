@@ -67,6 +67,7 @@ with type_check:
     for column, type_c in types:
         if(type_c != 'str' and type_c != 'no check'):
             df_check = ch.check_type(df_i, column, type_c)
+            st.write(df_check.shape)
             df_type_check.append(df_check)
         st.write(df_type_check.shape)
             
