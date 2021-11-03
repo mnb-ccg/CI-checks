@@ -227,6 +227,7 @@ def check_nationality(df):
 ### 
 def apply_type(line, type_inp):
     if(type_inp == 'int'):
+        return True
         try:
             int(line)
             return True
