@@ -122,11 +122,12 @@ def date_split(date):
         years = 0     
         return days, months, years, False
 
-def check_date_format(date):
+def check_date_format(date, column):
+    comment = ""
     ## Do we accept that dates are nan values?
     if (type(date) == float):
         if(math.isnan(date)):
-            return True
+            return comment
     
     days, months, years, bool_split = date_split(date)
     
@@ -141,17 +142,20 @@ def check_date_format(date):
         years_b1 = ((int(years)<=2030) and (int(years)>1900))
         
         bool_cd = (days_b0 and days_b1 and months_b0 and months_b1 and  years_b0 and years_b1)
-        return bool_cd
+        if (bool_cd == True):
+            return comment
+        else:
+            comment = column + ": Wrong format. Ensure YYYY-MM-DD |"
+            return comment
     
     else:
-        return False
+        comment = column +  "date: Wrong format. Ensure YYYY-MM-DD |"
+        return comment
     
 
 def check_date(df, column):
-    df_check = df[column].apply(check_date_format)
-    bool_cd = df_check.all()
-    faulty_rows = df[df_check == False]
-    return bool_cd, faulty_rows
+    df_check = df.apply(lambda x: check_date_format(x[column], column), axis=1)
+    return df_check
 ###
 
 
