@@ -225,7 +225,7 @@ def check_nationality(df):
 ###
 
 ### 
-def apply_type(line, type_inp):
+def apply_type(line, column, type_inp):
     comment = ""
     if(type(line) == float and math.isnan(line)):
         return comment
@@ -235,7 +235,7 @@ def apply_type(line, type_inp):
             int(line)
             return comment
         except (ValueError, TypeError):
-            comment = "This should be a non-decimal number"
+            comment = column + ": " + "This should be a non-decimal number"
             return comment  
         
     elif(type_inp == 'float'):
@@ -243,7 +243,7 @@ def apply_type(line, type_inp):
             float(line)
             return comment
         except (ValueError, TypeError):
-            comment = "This should be a number, non-decimal or whole number"
+            comment = column + ": " +  "This should be a number, non-decimal or whole number"
             return comment
         
     elif(type_inp == 'dummy'):
@@ -252,10 +252,10 @@ def apply_type(line, type_inp):
             if(dummy == 0 or dummy == 1):
                 return comment
             else:
-                comment = "This should be either a 0 or a 1"
+                comment = column + ": " +  "This should be either a 0 or a 1"
                 return comment
         except (ValueError, TypeError):
-            comment = "This should be a non-decimal number between 0-1"
+            comment = column + ": " +  "This should be a non-decimal number between 0-1"
             return comment
         
     else:
@@ -266,7 +266,7 @@ def apply_type(line, type_inp):
 
 def check_type(df, column, type_inp):
     new_df = df.copy()
-    df_check = new_df.apply(lambda x: apply_type(x[column], type_inp), axis=1)
+    df_check = new_df.apply(lambda x: apply_type(x[column], column, type_inp), axis=1)
     return df_check
     
 ###
