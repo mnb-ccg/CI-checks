@@ -39,6 +39,7 @@ def upload_file():
     file_bool_c = False
     upload_bool = False
     country = ''
+    file_name = ''
     df_i = pd.DataFrame()
     df_c = pd.DataFrame()
     
