@@ -74,6 +74,13 @@ def filter_an_report(df):
     new_df = df[df['annual_report'] == 1]
     return new_df
 
+def remove_xlsx_xls(file_name):
+    new_name = '_FEEDBACK.csv'
+    if (file_name[-4:] == 'xlsx'):
+        new_name = file_name[:-5] + '_FEEDBACK.csv'
+    elif (file_name[-3:] == 'xls'):
+        new_name = file_name[:-4] + 'FEEDBACK.csv'
+    return new_name
 
 def get_table_download_link(df, file_name):
     """Generates a link allowing the data in a given panda dataframe to be downloaded
@@ -81,7 +88,8 @@ def get_table_download_link(df, file_name):
     out: href string
     """
     
-    name = file_name + "_FEEDBACK"
+    name = remove_xlsx_xls(file_name)
+    
     csv = df.to_csv(index=False)
     b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
     href = f'<a href="data:file/csv;base64,{b64}" download="%s">Download file of "Individual" sheet with feedback</a>' % name
