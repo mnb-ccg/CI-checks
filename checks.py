@@ -35,7 +35,6 @@ def plot_barh_missing(columns, values, start_index, final_index, title):
     plt.ylabel("Ratio of missing values")
     plt.title(title)
     plt.xlim(left = 0.0, right = 1.05)
-
     return fig
 
 def check_if_nan(value):
@@ -46,26 +45,28 @@ def check_if_nan(value):
 
 def col_standardize(columns):
     col_low = [x.lower() for x in columns]
-    col_clean = [s.translate(str.maketrans('', '', string.punctuation)) for s in col_low] 
-    return col_clean
+    #col_clean = [s.translate(str.maketrans('', '', string.punctuation)) for s in col_low] 
+    return col_low
 
 
 ###
 def column_check(df, sheet, country):
     
     df_col = df.columns.astype(str)
-    #df_col_clean = col_standardize(df_col)
+    df_col_clean = col_standardize(df_col)
     
     if(sheet == 'Individual' and country != 'SE'):
         templ_col = column_names_i
-        #templ_col_clean = col_standardize(templ_col)
+        templ_col_clean = col_standardize(templ_col)
     elif(sheet == 'Company' and country != 'SE'):
         templ_col = column_names_c
-        #templ_col_clean = col_standardize(templ_col)
+        templ_col_clean = col_standardize(templ_col)
     elif(sheet == 'Individual' and country == 'SE'):
         templ_col = column_names_i_SE
+        templ_col_clean = col_standardize(templ_col)
     elif(sheet == 'Company' and country == 'SE'):
-        templ_col = column_names_c_SE    
+        templ_col = column_names_c_SE
+        templ_col_clean = col_standardize(templ_col)
         
     else:
         st.error("Sheet name not recognized")
@@ -75,7 +76,7 @@ def column_check(df, sheet, country):
     
     correct = False
     df_set = set(df_col)
-    templ_set = set(templ_col)
+    templ_set = set(templ_col_clean)
     missing_columns = templ_set - df_set
     excess_columns = df_set - templ_set
     
