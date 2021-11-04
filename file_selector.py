@@ -55,15 +55,15 @@ def upload_file():
         df_i.columns = [x.lower() for x in df_i.columns]
         df_c.columns = [x.lower() for x in df_c.columns]
         
-        country = uploaded_file.name[0:2]
-        st.write(country)
+        file_name = uploaded_file.name
+        country = file_name[0:2]
         if (df_i.empty == False):
             file_bool_i = True
         if (df_c.empty == False): 
             file_bool_c = True
         upload_bool = True
             
-    return df_i, df_c, file_bool_i, file_bool_c, upload_bool, country
+    return df_i, df_c, file_bool_i, file_bool_c, upload_bool, country, file_name
 
 def get_types():
     types_r = types
@@ -74,14 +74,14 @@ def filter_an_report(df):
     return new_df
 
 
-def get_table_download_link(df):
+def get_table_download_link(df, file_name):
     """Generates a link allowing the data in a given panda dataframe to be downloaded
     in:  dataframe
     out: href string
     """
     csv = df.to_csv(index=False)
     b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
-    href = f'<a href="data:file/csv;base64,{b64}" download="myfilename.csv">Download file of "Individual" sheet with feedback</a>'
+    href = f'<a href="data:file/csv;base64,{b64}" download="%s">Download file of "Individual" sheet with feedback</a>' % file_name
     return href
 
 types = [

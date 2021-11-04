@@ -132,7 +132,6 @@ def date_split(date):
 
 def check_date_format(date, column):
     comment = ""
-    ## Do we accept that dates are nan values?
     if (type(date) == float):
         if(math.isnan(date)):
             return comment
@@ -224,7 +223,7 @@ def check_position_format(inp):
     rc, pos = inp.split(",")
     
     if ((rc == "nan") or (pos == "nan")):
-        comment = "position: Should not be empty |"
+        comment = "position: Should not be empty | "
         return comment
         
     elif((rc == 'EXECUTIVE') and (len(pos)>0)):

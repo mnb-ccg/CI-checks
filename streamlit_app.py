@@ -53,7 +53,7 @@ with get_file:
     file_bool_c = False
     upload_bool = False
     
-    df_i, df_c, file_bool_i, file_bool_c, upload_bool, country = fs.upload_file()
+    df_i, df_c, file_bool_i, file_bool_c, upload_bool, country, file_name = fs.upload_file()
     
     
     if(upload_bool == True):
@@ -144,7 +144,7 @@ with year_check:
 with downloader:
     if(column_check_i & column_check_c):
         df_i['feedback'] = df_type_check['feedback']
-        st.markdown(fs.get_table_download_link(df_i), unsafe_allow_html=True)
+        st.markdown(fs.get_table_download_link(df_i, file_name), unsafe_allow_html=True)
         
     #DC function here, returns new df with wrong rows, input dataframe from upload
     
