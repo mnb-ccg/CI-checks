@@ -226,7 +226,7 @@ def check_position_format(inp):
         return comment
     
     else: 
-        comment = "position: Does not fit specifications, e.g. if role_code = 'BOARD', must be either 'CHAIRMAN' or 'BOARD MEMBER' | "
+        comment = "position: Does not fit specifications, e.g. if role_code = 'BOARD', must be either 'BOARD MEMBER', 'CHAIRMAN', or 'VICE CHAIRMAN'| "
         return comment
 
 
