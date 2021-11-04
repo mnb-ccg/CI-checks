@@ -30,7 +30,7 @@ with header:
     st.title("Data Self-Checking App")
     st.write("Hello, and welcome to the CBS-CCG data-checking app.")
     st.write("The idea behind this app is to minimize time spent correcting data sent to CBS-CCG, allowing our suppliers to deliver high-quality data on time!")
-    st.write("You can upload the datasheet in the drag-and-drop box under the Tutorial section. When you have done so, the app will make a series of automated checks according to the manual sent to our suppliers.")
+    st.write("You can upload the datasheet in the drag-and-drop box below. When you have done so, the app will make a series of automated checks according to the manual sent to our suppliers.")
     
 
 
