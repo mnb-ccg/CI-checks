@@ -76,7 +76,7 @@ def column_check(df, sheet, country):
     
     correct = False
     df_set = set(df_col)
-    templ_set = set(templ_col)
+    templ_set = set(templ_col_clean)
     missing_columns = templ_set - df_set
     excess_columns = df_set - templ_set
     
