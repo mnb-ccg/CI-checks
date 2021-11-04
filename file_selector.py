@@ -37,7 +37,7 @@ def upload_file():
     df_i = pd.DataFrame()
     df_c = pd.DataFrame()
     
-    st.write(uploaded_file)
+    st.write(uploaded_file.name)
     
     if uploaded_file is not None:
         try:
