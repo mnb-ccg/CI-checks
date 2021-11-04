@@ -48,9 +48,10 @@ def upload_file():
             df_i = pd.read_excel(uploaded_file, engine="openpyxl", sheet_name='Individual')
             df_c = pd.read_excel(uploaded_file, engine="openpyxl", sheet_name='Company')
         
-        st.write(uploaded_file.name)
+        
         
         country = uploaded_file.name[0:1]
+        st.write(uploaded_file.name)
         if (df_i.empty == False):
             file_bool_i = True
         if (df_c.empty == False): 
