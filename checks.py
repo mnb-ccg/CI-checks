@@ -78,9 +78,9 @@ def column_check(df, sheet):
     else:
         correct = False
         st.error("The columns are not the same as the template.")
-        st.error("These columns were not found in the uploaded dataset (Note: punctuation has been removed):")
+        st.error("These columns were not found in the uploaded dataset:")
         st.write(missing_columns)
-        st.warning("These columns were found in the dataset, but not in the template (Note: punctuation has been removed):")
+        st.warning("These columns were found in the dataset, but not in the template:")
         st.write(excess_columns)
 
     return correct
