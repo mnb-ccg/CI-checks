@@ -136,7 +136,6 @@ def check_date_format(date, column):
         
         days_b1 = False
         try:
-            st.write(days)
             days_b1 = (int(days) <= 31)
         except ValueError:
             pass
@@ -150,7 +149,6 @@ def check_date_format(date, column):
         months_b1 = False
         try:
             months_b1 = (int(months) <= 12)
-            st.write(months)
         except ValueError:
             pass
         
@@ -163,7 +161,6 @@ def check_date_format(date, column):
         years_b1 = False
         try:
             years_b1 = ((int(years)<=2030) and (int(years)>1900))
-            st.write(years)
         except ValueError:
             pass
         
@@ -172,10 +169,6 @@ def check_date_format(date, column):
         
         
         bool_cd = (days_b1 and months_b1 and years_b1)
-        st.write(bool_cd)
-        st.write(days_b1)
-        st.write(months_b1)
-        st.write(years_b1)
         if (bool_cd == True):
             return comment
         else:
