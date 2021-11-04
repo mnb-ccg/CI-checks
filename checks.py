@@ -53,20 +53,20 @@ def col_standardize(columns):
 def column_check(df, sheet, country):
     
     df_col = df.columns.astype(str)
-    df_col_clean = col_standardize(df_col)
+    #df_col_clean = col_standardize(df_col)
     
     if(sheet == 'Individual' and country != 'SE'):
         templ_col = column_names_i
-        #templ_col_clean = col_standardize(templ_col)
+        templ_col_clean = col_standardize(templ_col)
     elif(sheet == 'Company' and country != 'SE'):
         templ_col = column_names_c
-        #templ_col_clean = col_standardize(templ_col)
+        templ_col_clean = col_standardize(templ_col)
     elif(sheet == 'Individual' and country == 'SE'):
         templ_col = column_names_i_SE
-        #templ_col_clean = col_standardize(templ_col)
+        templ_col_clean = col_standardize(templ_col)
     elif(sheet == 'Company' and country == 'SE'):
         templ_col = column_names_c_SE
-        #templ_col_clean = col_standardize(templ_col)
+        templ_col_clean = col_standardize(templ_col)
         
     else:
         st.error("Sheet name not recognized")
