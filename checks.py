@@ -134,34 +134,41 @@ def check_date_format(date, column):
     if (bool_split == True):
         days_b0 = (len(days) == 2)
         
+        days_b1 = False
         try:
             st.write(days)
             days_b1 = (int(days) <= 31)
         except ValueError:
             pass
-            
-        days_b1 = days in 'X XX x xx'
+        
+        if(days_b1 == False):
+            days_b1 = days in 'X XX x xx'
         
         
         months_b0 = (len(months) == 2)
+        
+        months_b1 = False
         try:
             months_b1 = (int(months) <= 12)
             st.write(months)
         except ValueError:
             pass
         
-        months_b1 = months in 'X XX x xx'
+        if(months_b1 == False):
+            months_b1 = months in 'X XX x xx'
         
         
         years_b0 = (len(years) == 4)
         
+        years_b1 = False
         try:
             years_b1 = ((int(years)<=2030) and (int(years)>1900))
             st.write(years)
         except ValueError:
             pass
         
-        years_b1 = years in 'X XX XXX XXXX x xx xxx xxxx'
+        if(years_b1 == False):
+            years_b1 = years in 'X XX XXX XXXX x xx xxx xxxx'
         
         
         bool_cd = (days_b0 and days_b1 and months_b0 and months_b1 and  years_b0 and years_b1)
