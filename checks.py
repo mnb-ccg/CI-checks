@@ -137,14 +137,14 @@ def check_date_format(date, column):
         try:
             days_b1 = (int(days) <= 31)
         except ValueError:
-            days_b1 = (days == 'X' or days == 'XX' or days == 'x' or days == 'xx')
+            days_b1 = ((days == 'X') or (days == 'XX') or (days == 'x') or (days == 'xx'))
         
         
         months_b0 = (len(months) == 2)
         try:
             months_b1 = (int(months) <= 12)
         except ValueError:
-            months_b1 = (months == 'X' or months == 'XX' or months == 'x' or months == 'xx')
+            months_b1 = ((months == 'X') or (months == 'XX') or (months == 'x') or (months == 'xx'))
         
         
         years_b0 = (len(years) == 4)
