@@ -211,7 +211,7 @@ def check_role_code(df):
 ###
 def check_position_format(inp):
     comment = ""
-    board_pos = ['CHAIRMAN', 'VICECHAIRMAN', 'BOARD MEMBER', 'DEPUTY BOARD MEMBER']
+    board_pos = ['CHAIRMAN', 'VICE CHAIRMAN', 'VICECHAIRMAN', 'BOARD MEMBER', 'DEPUTY BOARD MEMBER']
     
     rc, pos = inp.split(",")
     
@@ -226,7 +226,7 @@ def check_position_format(inp):
         return comment
     
     else: 
-        comment = "position: Does not fit specifications, e.g. if role_code = 'BOARD', must be e.g. 'CHAIRMAN' or 'BOARD MEMBER' | "
+        comment = "position: Does not fit specifications, e.g. if role_code = 'BOARD', must be either 'CHAIRMAN' or 'BOARD MEMBER' | "
         return comment
 
 
