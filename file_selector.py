@@ -12,6 +12,10 @@ import base64
 from xlrd import open_workbook, XLRDError
 
 
+def col_standardize(columns):
+    col_low = [x.lower() for x in columns]
+    return col_low
+
 def test_book(filename):
     try:
         open_workbook(filename)
@@ -48,7 +52,8 @@ def upload_file():
             df_i = pd.read_excel(uploaded_file, engine="openpyxl", sheet_name='Individual')
             df_c = pd.read_excel(uploaded_file, engine="openpyxl", sheet_name='Company')
         
-        
+        df_i.columns = col_standardize(df_i)
+        df_c.columns = col_standardize(df_c)
         
         country = uploaded_file.name[0:2]
         st.write(country)

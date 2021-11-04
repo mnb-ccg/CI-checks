@@ -57,16 +57,16 @@ def column_check(df, sheet, country):
     
     if(sheet == 'Individual' and country != 'SE'):
         templ_col = column_names_i
-        templ_col_clean = col_standardize(templ_col)
+        #templ_col_clean = col_standardize(templ_col)
     elif(sheet == 'Company' and country != 'SE'):
         templ_col = column_names_c
-        templ_col_clean = col_standardize(templ_col)
+        #templ_col_clean = col_standardize(templ_col)
     elif(sheet == 'Individual' and country == 'SE'):
         templ_col = column_names_i_SE
-        templ_col_clean = col_standardize(templ_col)
+        #templ_col_clean = col_standardize(templ_col)
     elif(sheet == 'Company' and country == 'SE'):
         templ_col = column_names_c_SE
-        templ_col_clean = col_standardize(templ_col)
+        #templ_col_clean = col_standardize(templ_col)
         
     else:
         st.error("Sheet name not recognized")
@@ -76,7 +76,7 @@ def column_check(df, sheet, country):
     
     correct = False
     df_set = set(df_col)
-    templ_set = set(templ_col_clean)
+    templ_set = set(templ_col)
     missing_columns = templ_set - df_set
     excess_columns = df_set - templ_set
     
