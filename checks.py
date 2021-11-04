@@ -137,14 +137,18 @@ def check_date_format(date, column):
         try:
             days_b1 = (int(days) <= 31)
         except ValueError:
-            days_b1 = ((days == 'X') or (days == 'XX') or (days == 'x') or (days == 'xx'))
+            pass
+            
+        days_b1 = ((days == 'X') or (days == 'XX') or (days == 'x') or (days == 'xx'))
         
         
         months_b0 = (len(months) == 2)
         try:
             months_b1 = (int(months) <= 12)
         except ValueError:
-            months_b1 = ((months == 'X') or (months == 'XX') or (months == 'x') or (months == 'xx'))
+            pass
+        
+        months_b1 = ((months == 'X') or (months == 'XX') or (months == 'x') or (months == 'xx'))
         
         
         years_b0 = (len(years) == 4)
@@ -152,7 +156,9 @@ def check_date_format(date, column):
         try:
             years_b1 = ((int(years)<=2030) and (int(years)>1900))
         except ValueError:
-            years_b1 = years in 'X XX XXX XXXX x xx xxx xxxx'
+            pass
+        
+        years_b1 = years in 'X XX XXX XXXX x xx xxx xxxx'
         
         
         bool_cd = (days_b0 and days_b1 and months_b0 and months_b1 and  years_b0 and years_b1)
