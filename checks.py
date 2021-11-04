@@ -133,7 +133,13 @@ def check_date_format(date, column):
     
     if (bool_split == True):
         days_b0 = (len(days) == 2)
-        days_b1 = (int(days) <= 31)
+        
+        try:
+            days_b1 = (int(days) <= 31)
+        except ValueError:
+            st.write(days)
+            days_b1 = False
+        
         
         months_b0 = (len(months) == 2)
         months_b1 = (int(months) <= 12)
