@@ -135,6 +135,7 @@ def check_date_format(date, column):
         days_b0 = (len(days) == 2)
         
         try:
+            st.write(days)
             days_b1 = (int(days) <= 31)
         except ValueError:
             pass
@@ -145,6 +146,7 @@ def check_date_format(date, column):
         months_b0 = (len(months) == 2)
         try:
             months_b1 = (int(months) <= 12)
+            st.write(months)
         except ValueError:
             pass
         
@@ -155,6 +157,7 @@ def check_date_format(date, column):
         
         try:
             years_b1 = ((int(years)<=2030) and (int(years)>1900))
+            st.write(years)
         except ValueError:
             pass
         
