@@ -56,14 +56,21 @@ def column_check(df, sheet, country):
     df_col = df.columns.astype(str)
     #df_col_clean = col_standardize(df_col)
     
-    if(sheet == 'Individual'):
+    if(sheet == 'Individual' and country != 'SE'):
         templ_col = column_names_i
         #templ_col_clean = col_standardize(templ_col)
-    elif(sheet == 'Company'):
+    elif(sheet == 'Company' and country != 'SE'):
         templ_col = column_names_c
         #templ_col_clean = col_standardize(templ_col)
+    elif(sheet == 'Individual' and country == 'SE'):
+        templ_col = column_names_i_SE
+    elif(sheet == 'Company' and country == 'SE'):
+        templ_col = column_names_c_SE    
+        
     else:
         st.error("Sheet name not recognized")
+        
+    
         
     
     correct = False
