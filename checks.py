@@ -165,6 +165,10 @@ def check_date_format(date, column):
         
         
         bool_cd = (days_b0 and days_b1 and months_b0 and months_b1 and  years_b0 and years_b1)
+        st.write(bool_cd)
+        st.write(days_b1)
+        st.write(months_b1)
+        st.write(years_b1)
         if (bool_cd == True):
             return comment
         else:
