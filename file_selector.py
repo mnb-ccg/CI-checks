@@ -52,8 +52,8 @@ def upload_file():
             df_i = pd.read_excel(uploaded_file, engine="openpyxl", sheet_name='Individual')
             df_c = pd.read_excel(uploaded_file, engine="openpyxl", sheet_name='Company')
         
-        df_i.columns = col_standardize(df_i)
-        df_c.columns = col_standardize(df_c)
+        df_i.columns = col_standardize(df_i.columns)
+        df_c.columns = col_standardize(df_c.columns)
         
         country = uploaded_file.name[0:2]
         st.write(country)
