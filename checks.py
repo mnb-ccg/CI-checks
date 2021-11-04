@@ -45,22 +45,22 @@ def check_if_nan(value):
 
 def col_standardize(columns):
     col_low = [x.lower() for x in columns]
-    #col_clean = [s.translate(str.maketrans('', '', string.punctuation)) for s in col_low] 
-    return col_low
+    col_clean = [s.translate(str.maketrans('', '', string.punctuation)) for s in col_low] 
+    return col_clean
 
 
 ###
 def column_check(df, sheet):
     
     df_col = df.columns.astype(str)
-    df_col_clean = col_standardize(df_col)
+    #df_col_clean = col_standardize(df_col)
     
     if(sheet == 'Individual'):
         templ_col = column_names_i
-        templ_col_clean = col_standardize(templ_col)
+        #templ_col_clean = col_standardize(templ_col)
     elif(sheet == 'Company'):
         templ_col = column_names_c
-        templ_col_clean = col_standardize(templ_col)
+        #templ_col_clean = col_standardize(templ_col)
     else:
         st.error("Sheet name not recognized")
         
