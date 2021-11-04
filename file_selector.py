@@ -51,7 +51,7 @@ def upload_file():
         
         
         country = uploaded_file.name[0:1]
-        st.write(uploaded_file.name)
+        st.write(country)
         if (df_i.empty == False):
             file_bool_i = True
         if (df_c.empty == False): 
