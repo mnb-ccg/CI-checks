@@ -16,7 +16,8 @@ import math
 column_names_i = ['company_id', 'company_name', 'year', 'person_id', 'name', 'annual_report', 'birth_date', 'gender', 'nationality', 'role_code', 'position', 'election_form', 'independent', 'on_board', 'appointment_date', 'nomination', 'audit', 'remuneration', 'risk', 'step_down', 'months_serving', 'comment', 'current_shares_A_number', 'current_shares_A_value', 'current_shares_B_number', 'current_shares_B_value', 'current_shares_total_number', 'current_shares_total_value', 'current_options_number', 'current_options_value', 'currency', 'base_salary', 'bonus', 'total', 'award_total_value', 'award_options', 'award_shares', 'award_performance', 'award_restricted', 'pension_total', 'other_monetary', 'other_non_monetary', 'row_id']
 column_names_c = ['company_id', 'company_name', 'year', 'size_management', 'total_pay_management', 'size_board', 'total_pay_board', 'employees_year_end', 'employees_average', 'total_pay_employees', 'currency', 'fisca_year_start', 'fiscal_year_end', 'row_id']
 
-
+column_names_i_SE = ['code', 'company_name', 'year', 'person_id', 'name', 'annual_report', 'birth_date', 'gender', 'nationality', 'role_code', 'position', 'election_form', 'independent', 'on_board', 'appointment_date', 'nomination', 'audit', 'remuneration', 'risk', 'step_down', 'months_serving', 'comment', 'current_shares_A_number', 'current_shares_A_value', 'current_shares_B_number', 'current_shares_B_value', 'current_shares_total_number', 'current_shares_total_value', 'current_options_number', 'current_options_value', 'currency', 'base_salary', 'bonus', 'total', 'award_total_value', 'award_options', 'award_shares', 'award_performance', 'award_restricted', 'pension_total', 'other_monetary', 'other_non_monetary', 'row_id']
+column_names_c_SE = ['code', 'company_name', 'year', 'size_management', 'total_pay_management', 'size_board', 'total_pay_board', 'employees_year_end', 'employees_average', 'total_pay_employees', 'currency', 'fiscal_year_start', 'fiscal_year_end']
 
 
 
@@ -50,7 +51,7 @@ def col_standardize(columns):
 
 
 ###
-def column_check(df, sheet):
+def column_check(df, sheet, country):
     
     df_col = df.columns.astype(str)
     #df_col_clean = col_standardize(df_col)
@@ -107,7 +108,6 @@ def date_split(date):
     try:
         split_date = date.split("-")
     except AttributeError:
-        #print("AttributeError, most likely nan value")
         split_date = []
         
 

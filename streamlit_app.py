@@ -27,7 +27,7 @@ downloader = st.container()
 
 
 with header:
-    st.title("Data Self-Checking App")
+    st.title("Data Self-Checking App v. 1.0")
     st.write("Hello, and welcome to the CBS-CCG data-checking app.")
     st.write("The idea behind this app is to minimize time spent correcting data sent to CBS-CCG, allowing our suppliers to deliver high-quality data on time!")
     st.write("You can upload the datasheet in the drag-and-drop box below. When you have done so, the app will make a series of automated checks according to the manual sent to our suppliers.")
@@ -53,7 +53,7 @@ with get_file:
     file_bool_c = False
     upload_bool = False
     
-    df_i, df_c, file_bool_i, file_bool_c, upload_bool = fs.upload_file()
+    df_i, df_c, file_bool_i, file_bool_c, upload_bool, country = fs.upload_file()
     
     
     if(upload_bool == True):
@@ -74,10 +74,10 @@ with basic_check:
         st.header("Basic Columns Check")
         st.subheader("Column Check - 'Individual'")
         if (file_bool_i):
-            column_check_i = ch.column_check(df_i, 'Individual')
+            column_check_i = ch.column_check(df_i, 'Individual', country)
         st.subheader("Column Check - 'Company'")
         if (file_bool_c):
-            column_check_c = ch.column_check(df_c, 'Company')
+            column_check_c = ch.column_check(df_c, 'Company', country)
             
 
 with type_check:

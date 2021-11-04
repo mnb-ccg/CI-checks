@@ -34,7 +34,7 @@ def upload_file():
     file_bool_i = False
     file_bool_c = False
     upload_bool = False
-    country = 'NOTSE'
+    country = ''
     df_i = pd.DataFrame()
     df_c = pd.DataFrame()
     
@@ -49,8 +49,8 @@ def upload_file():
             df_c = pd.read_excel(uploaded_file, engine="openpyxl", sheet_name='Company')
         
         st.write(uploaded_file.name)
-        if(uploaded_file.name[0:1] == 'SE'):
-            country = 'SE'
+        
+        country = uploaded_file.name[0:1]
         if (df_i.empty == False):
             file_bool_i = True
         if (df_c.empty == False): 
