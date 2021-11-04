@@ -34,10 +34,11 @@ def upload_file():
     file_bool_i = False
     file_bool_c = False
     upload_bool = False
+    country = 'NOTSE'
     df_i = pd.DataFrame()
     df_c = pd.DataFrame()
     
-    st.write(uploaded_file.name)
+    
     
     if uploaded_file is not None:
         try:
@@ -46,14 +47,17 @@ def upload_file():
         except ValueError:
             df_i = pd.read_excel(uploaded_file, engine="openpyxl", sheet_name='Individual')
             df_c = pd.read_excel(uploaded_file, engine="openpyxl", sheet_name='Company')
-            
+        
+        st.write(uploaded_file.name)
+        if(uploaded_file.name[0:1] == 'SE'):
+            country = 'SE'
         if (df_i.empty == False):
             file_bool_i = True
         if (df_c.empty == False): 
             file_bool_c = True
         upload_bool = True
             
-    return df_i, df_c, file_bool_i, file_bool_c, upload_bool
+    return df_i, df_c, file_bool_i, file_bool_c, upload_bool, country
 
 def get_types():
     types_r = types
