@@ -80,9 +80,11 @@ def get_table_download_link(df, file_name):
     in:  dataframe
     out: href string
     """
+    
+    name = file_name + "_FEEDBACK"
     csv = df.to_csv(index=False)
     b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
-    href = f'<a href="data:file/csv;base64,{b64}" download="%s">Download file of "Individual" sheet with feedback</a>' % file_name
+    href = f'<a href="data:file/csv;base64,{b64}" download="%s">Download file of "Individual" sheet with feedback</a>' % name
     return href
 
 types = [
