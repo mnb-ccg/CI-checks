@@ -132,7 +132,7 @@ def check_date_format(date, column):
     days, months, years, bool_split = date_split(date)
     
     if (bool_split == True):
-        days_b0 = (len(days) == 2)
+        #days_b0 = (len(days) == 2)
         
         days_b1 = False
         try:
@@ -145,7 +145,7 @@ def check_date_format(date, column):
             days_b1 = days in 'X XX x xx'
         
         
-        months_b0 = (len(months) == 2)
+        #months_b0 = (len(months) == 2)
         
         months_b1 = False
         try:
@@ -158,7 +158,7 @@ def check_date_format(date, column):
             months_b1 = months in 'X XX x xx'
         
         
-        years_b0 = (len(years) == 4)
+        #years_b0 = (len(years) == 4)
         
         years_b1 = False
         try:
@@ -171,7 +171,7 @@ def check_date_format(date, column):
             years_b1 = years in 'X XX XXX XXXX x xx xxx xxxx'
         
         
-        bool_cd = (days_b0 and days_b1 and months_b0 and months_b1 and  years_b0 and years_b1)
+        bool_cd = (days_b1 and months_b1 and years_b1)
         st.write(bool_cd)
         st.write(days_b1)
         st.write(months_b1)
