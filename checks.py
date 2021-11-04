@@ -139,7 +139,7 @@ def check_date_format(date, column):
         except ValueError:
             pass
             
-        days_b1 = ((days == 'X') or (days == 'XX') or (days == 'x') or (days == 'xx'))
+        days_b1 = days in 'X XX x xx'
         
         
         months_b0 = (len(months) == 2)
@@ -148,7 +148,7 @@ def check_date_format(date, column):
         except ValueError:
             pass
         
-        months_b1 = ((months == 'X') or (months == 'XX') or (months == 'x') or (months == 'xx'))
+        months_b1 = months in 'X XX x xx'
         
         
         years_b0 = (len(years) == 4)
