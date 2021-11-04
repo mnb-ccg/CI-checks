@@ -37,6 +37,8 @@ def upload_file():
     df_i = pd.DataFrame()
     df_c = pd.DataFrame()
     
+    st.write(uploaded_file)
+    
     if uploaded_file is not None:
         try:
             df_i = pd.read_excel(uploaded_file, engine="openpyxl", sheet_name='individual')
