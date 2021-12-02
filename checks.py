@@ -224,7 +224,7 @@ def check_position_format(inp):
         rc, pos = inp.split(",")
     except ValueError:
         print(inp)
-        return "position, role code: not a valid format |"
+        return "position OR role_code: not a valid format |"
     
     if ((rc == "nan") or (pos == "nan")):
         comment = "position: Should not be empty | "
