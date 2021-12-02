@@ -220,7 +220,11 @@ def check_position_format(inp):
     comment = ""
     board_pos = ['CHAIRMAN', 'VICE CHAIRMAN', 'VICECHAIRMAN', 'BOARD MEMBER', 'DEPUTY BOARD MEMBER']
     
-    rc, pos = inp.split(",")
+    try:
+        rc, pos = inp.split(",")
+    except ValueError:
+        print(inp)
+        return "position, role code: not a valid format |"
     
     if ((rc == "nan") or (pos == "nan")):
         comment = "position: Should not be empty | "
