@@ -221,13 +221,13 @@ def check_position_format(inp):
     board_pos = ['CHAIRMAN', 'VICE CHAIRMAN', 'VICECHAIRMAN', 'BOARD MEMBER', 'DEPUTY BOARD MEMBER']
     
     try:
-        rc, pos = inp.split(",")
+        rc, pos = inp.split("::")
     except ValueError:
         print(inp)
         return "position OR role_code: not a valid format |"
     
     if ((rc == "nan") or (pos == "nan")):
-        comment = "position: Should not be empty | "
+        comment = "position OR role_code: Should not be empty | "
         return comment
         
     elif((rc == 'EXECUTIVE') and (len(pos)>0)):
@@ -243,7 +243,7 @@ def check_position_format(inp):
 
 def check_position(df):
     new_df = df.copy()
-    new_df['key'] = df['role_code'].astype(str) + "," + df['position'].astype(str) 
+    new_df['key'] = df['role_code'].astype(str) + "::" + df['position'].astype(str) 
     df_check = new_df['key'].apply(check_position_format)
     return df_check
 ###
